@@ -1,0 +1,28 @@
+h5{
+  text-align: center;
+}
+.animate__animated h1{
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--light);
+}
+.animate__animated a{
+  color: var(--light);
+}
+.animate__animated a:hover{
+  color: var(--bgHover);
+}
+.animate__animated a:nth-child(1)::after, .animate__animated a:nth-child(2)::after{
+  content: '|';
+  padding-inline: 0.5rem;
+}
+.animate__animated a:nth-child(1):hover:after, .animate__animated a:nth-child(2):hover:after{
+  color: var(--light);
+}
+
+.choose-us li{
+  list-style: disc;
+  padding-bottom: 0.3rem;
+}
+footer h5{
+  text-align: left;
+}
