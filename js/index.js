@@ -1,8 +1,9 @@
+// owl carousel
 document.addEventListener('DOMContentLoaded', function () {
   const owl =  $('.owl-carousel');
   owl.owlCarousel({
     loop:true,
-    margin:30,
+    margin:10,
     autoplay:true,
     autoplayTimeout:7000,
     nav:false,
@@ -24,21 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 })
 
-
-
-
-window.onscroll = function() {scrollFunction()};
-
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("navbar").classList.add("scrolled");
-  } else {
-    document.getElementById("navbar").classList.remove("scrolled");
-  }
-}
-
-
-
+// for removing the toggle button upon click
   document.addEventListener('DOMContentLoaded', function () {
     const navbarToggle = document.querySelector('.navbar-toggler');
     const offcanvas = document.querySelector('.offcanvas');

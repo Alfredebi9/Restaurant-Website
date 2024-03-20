@@ -1,63 +1,27 @@
-/* *{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
-  list-style: none;
-} */
-
-/* :root {
-  --primary: #ff8c5e;
-  --light: #F1F8FF;
-  --bgHover:#ff8c50;
-  --bgColor2:#0f0c29;
-  --bgColor: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-} */
-
-
-
-
-/* header */
-
-/* .lobster-style{
-  color: var(--primary);
-  font-family: "Lobster Two", sans-serif;
-} */
-
-.animate__animated h1{
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: var(--light);
-}
-.animate__animated a{
-  color: var(--light);
-}
-.animate__animated a:hover{
-  color: var(--bgHover);
-}
-.animate__animated a:nth-child(1)::after, .animate__animated a:nth-child(2)::after{
-  content: '|';
-  padding-inline: 0.5rem;
-}
-.animate__animated a:nth-child(1):hover:after, .animate__animated a:nth-child(2):hover:after{
-  color: var(--light);
-}
 .nav-tabs{
   border: none;
 }
 .nav-tabs .nav-link {
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: 1.5px solid transparent;
   cursor: pointer;
 }
 .nav-tabs i{
   color: var(--primary);
 }
-.sub-text *, .sub-text *:hover{
-  color: var( --bgColor2);
-} 
+.sub-text *{
+color: var(--bgColor2);
+}
 .nav-tabs .nav-link:hover {
   color: var(--primary);
+  border-color: transparent;
 }
 .nav-tabs .nav-link.active {
   border-color: var(--primary);
 }
+ h5 span:nth-child(1){
+  color: var(--bgColor2);
+ }
+ h5 span:nth-child(2){
+  color: var(--primary);
+ }

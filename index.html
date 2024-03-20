@@ -25,91 +25,87 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 
     <!-- owl carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   </head>
   <body>
-    <div class="container-xxl bg-white p-0 overflow-hidden">
-      <div class="position-relative" style="  background:url('./images/bg-hero.jpg') center/cover no-repeat;">
-        <div class="overlay"></div>
-          <!--start of navbar -->
-          <header class="container-fluid fixed-top p-0">
-            <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
-              <a href="" class="navbar-brand fs-1">
-                <h1 class="m-0">
-                  <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
-                </h1>
-              </a>
-              <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
-                <div class="offcanvas-header">
-                  <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
-                  <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                  <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
-                    <li class="nav-item">
-                      <a class="nav-link nav-item active" aria-current="page" href="index.html" >HOME</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link nav-item" href="Menu.html">MENU</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link nav-item" href="about.html">ABOUT US</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link nav-item" href="contact-us.html">CONTACT US</a>
-                    </li>
-                    <li class="nav-item dropdown" id="content">
-                      <a href="" class="nav-link nav-item dropdown-toggle" role="button"  data-bs-toggle="dropdown" >
-                        MORE
-                      </a>
-                      <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
-                        <li><a href="booking.html" class="dropdown-item">BOOKING</a></li>
-                        <li><a href="testimonial.html" class="dropdown-item">TESTIMONIAL</a></li>
-                      </ul>
-                    </li>
-                    <button class="btn small-btn shiny-btn px-4 ms-3" href="#" role="button"><a href="">LOG IN</a></button>                    
+    <div class="container-xxl bg-white p-0 position-relative">
+      <!--start of navbar -->
+      <header class="container-fluid z-3 sticky-top p-0 ">
+        <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
+          <a href="index.html" class="navbar-brand fs-1">
+            <h2 class="m-0">
+              <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
+            </h2>
+          </a>
+          <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+                <li class="nav-item">
+                  <a class="nav-link nav-item active" aria-current="page" href="index.html" >HOME</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link nav-item" href="Menu.html">MENU</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link nav-item" href="about.html">ABOUT US</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link nav-item" href="contact-us.html">CONTACT US</a>
+                </li>
+                <li class="nav-item dropdown" id="content">
+                  <a href="" class="nav-link nav-item dropdown-toggle" role="button"  data-bs-toggle="dropdown" >
+                    MORE
+                  </a>
+                  <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
+                    <li><a href="booking.html" class="dropdown-item">BOOKING</a></li>
+                    <li><a href="testimonial.html" class="dropdown-item">TESTIMONIAL</a></li>
                   </ul>
-                </div>
+                </li>
+                <a  class="btn small-btn shiny-btn px-4 ms-lg-3" role="button" href="login.html">LOG IN</a>                   
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      <!-- end of navbar -->
+      <div style="background-image: linear-gradient(to right, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.9), rgba(35, 35, 62, 0.9)),  url('images/bg-hero.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+        <!--start of hero-section-->
+        <article class="container-xxl py-5 m-auto">
+          <div class="container-xxl">
+            <div class="row g-4 m-auto align-items-center">
+              <div class="animate__animated animate__slideInLeft col-lg-6" id="hero-content">
+                <h1 id="hero-header-text">
+                <b>
+                  <span class="lobster-style">Enjoy</span> Our <br>
+                  Delicious <span class="lobster-style">Meal</span>
+                </b>
+                </h1>
+                <p class="mb-4">
+                  Indulge your senses in a symphony of flavors at <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span> , where culinary artistry meets heartfelt hospitality. We believe that every meal is a celebration, and we invite you to join us on a journey of exquisite tastes and unforgettable moments.
+                </p>
+                <a class="btn shiny-btn" role="button" href="booking.html">Book A Table</a>
               </div>
-            </nav>
-          </header>
-          <!-- end of navbar -->
-
-          <!--start of hero-section-->
-          <div class="container-xxl py-5 hero-header m-auto overflow-hidden">
-            <div class="container-xxl py-5">
-              <div class="row g-4 m-auto align-items-center ">
-                <div class="animate__animated animate__slideInLeft col-lg-6" id="hero-content">
-                  <h1 id="hero-header-text">
-                   <b>
-                    <span class="lobster-style">Enjoy</span> Our <br>
-                     Delicious <span class="lobster-style">Meal</span>
-                   </b>
-                  </h1>
-                  <p class="mb-4">
-                    Indulge your senses in a symphony of flavors at <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span> , where culinary artistry meets heartfelt hospitality. We believe that every meal is a celebration, and we invite you to join us on a journey of exquisite tastes and unforgettable moments.
-                  </p>
-                  <button class="btn small-btn shiny-btn" href="#" role="button"><a href="">Book A Table</a></button>
-                </div>
-                <div class="img-section col-lg-6" class="overflow-hidden">
-                  <div class="img-container">
-                  <img loading="lazy" src="images/hero.png" alt="Circular Animation Image" class="img-fluid circle-image">
-                  </div>
+              <div class="img-section col-lg-6">
+                <div class="img-container ps-lg-2 w-100 overflow-hidden">
+                <img loading="lazy" src="images/hero.png" alt="Circular Animation Image" class="img-fluid circle-image">
                 </div>
               </div>
             </div>
           </div>
-      </div>
+        </article>
+      </div>  
       <!-- end of hero section -->
-
       <!-- start of service section -->
       <div class="container-xxl py-5">
         <div class="container py-3">
@@ -169,8 +165,7 @@
           </div>
         </div>
       </div>
-      <!-- end of service section  -->
-
+      <!-- end of service section  -->  
       <!--start of about restuarant -->
       <div class="container-xxl py-3">
         <div class="container">
@@ -211,15 +206,14 @@
                 <p>
                   A unique eating experience is provided by the gastronomic restaurant <span class="text-nowrap lobster-style">T-HOUSE</span>. The restaurant creates a symphony of flavours by fusing innovation and tradition with locally sourced ingredients. The skilled cooks produce works of art that are memorable. The warm ambiance of the restaurant is ideal for both quiet evenings and large parties. Every piece of food at <span class="text-nowrap lobster-style">T-HOUSE</span> tells a narrative and evokes memories that remain long beyond the final meal. It's a place where passion meets palate.
                 </p>
-                <a class="btn small-btn shiny-btn" href="about.html">Read More</a>
+                <a class="btn shiny-btn" href="about.html">Read More</a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- end of about restuarant -->
-
-      <!-- start food-menu -->
+      <!-- start reservation -->
       <div class="container-xxl py-5">
         <div class="container">
           <div class="row g-0" style="flex-direction: row-reverse;">
@@ -228,44 +222,61 @@
                 <source class="embed-responsive-item" src="videos/watermarked_preview.mp4"/>
               </video>
             </div>
-            <div class="col-lg-6 px-5 py-5 reservation-menu">
+            <div class="col-lg-6 px-4 py-5 reservation-menu">
               <p class=" fs-3 fw-bold lobster-style">
                 Reservation &#x2015;
               </p>
-              <h1>
+              <h2>
                 Book A Table Online
-              </h1>
+              </h2>
               <form>
-                <div class="my-3">
-                  <input class="form-control p-2" type="text" placeholder="Your Name" required id=""/>
-                </div>
-                <div class="mb-3">
-                  <input class="form-control p-2" type="email" placeholder="Your Email" id="" required/>
-                </div>
-                <div class="row">
-                  <div class="mb-3 col-md-6">
-                    <input class="form-control p-2" type="date" required id=""/>
+                <div class="row g-3">
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" id="name" placeholder="Your Name">
+                      <label for="name">Your Name</label>
+                    </div>
                   </div>
-                  <div class="mb-3 col-md-6">
-                    <input class="form-control p-2" type="number" placeholder="No Of People" required id=""/>
+                  <div class="col-md-6">
+                    <div class="form-floating date" id="date3" data-target-input="nearest">
+                      <input type="date" class="form-control datetimepicker-input" id="datePicker" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
+                      <label for="datePicker">Date</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating date" id="time3" data-target-input="nearest">
+                      <input type="time" class="form-control datetimepicker-input" id="timePicker" placeholder="Date & Time" data-target="#time3" data-toggle="datetimepicker" />
+                      <label for="timePicker">Time</label>
+                    </div>
+                  </div>     
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="email" class="form-control" id="email" placeholder="Your Email">
+                      <label for="email">Your Email</label>
+                    </div>
+                  </div>             
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="number" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker">
+                      <label for="select1">No Of People</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating">
+                      <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                      <label for="message">Special Request</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <button class="btn shiny-btn w-100 py-3" type="submit">Book Now</button>
                   </div>
                 </div>
-                <div class="mb-3">
-                  <div class="mb-3">
-                    <textarea class="form-control pt-2 pb-5" type="text" required placeholder="Special Request" rows="3">
-                    </textarea>
-                  </div> 
-                </div>
-                <div class="mb-3">
-                <button class="form-control btn shiny-btn" type="submit">BOOK NOW</button>
-                </div>  
               </form>
             </div>
           </div>
         </div>
       </div>
-     <!-- end of food-menu -->
-      
+      <!-- end of reservation -->
       <!-- start of team-members -->
       <div class="container-xxl py-3">
         <div class="container">
@@ -280,13 +291,13 @@
           <div class="row g-4">
 
             <!-- member-1 -->
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6">
               <div class="card team-member-card shadow pb-5">
                 <div class="card-body p-0 text-center">
                   <div class="team-member-img mt-4 rounded-circle">
                     <img src="images/team-3.jpg" alt="" />
                   </div>
-                  <h2 class="m-0 mt-3"><b>Full Name </b></h2>
+                  <h3 class="m-0 mt-3"><b>Full Name </b></h3>
                   <small class="fw-bold mb-3">Chef Marco Aromas</small>
                   <div class="hidden-card-icon">
                     <div class="d-flex gap-3 justify-content-center">
@@ -299,19 +310,19 @@
               </div>
             </div>
             <!-- member-2 -->
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6">
               <div class="card team-member-card shadow pb-5">
                 <div class="card-body p-0 text-center">
                   <div class="team-member-img mt-4 rounded-circle">
                     <img src="images/team-2.jpg" alt="" />
                   </div>
-                  <h2 class="m-0 mt-3"><b>Full Name </b></h2>
+                  <h3 class="m-0 mt-3"><b>Full Name </b></h3>
                   <small class="fw-bold mb-3">Chef Antonio Saporito</small>
                   <div class="hidden-card-icon">
                     <div class="d-flex gap-3 justify-content-center">
                       <a href=""><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href=""><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                      <a href=""><i class="fa-brands fa-x-twitter"></i></a>
+                      <a href=""><i class="fa-brands fa-instagram"></i></a>
                     </div>
                   </div>
                 </div>
@@ -319,13 +330,13 @@
             </div>
 
             <!-- member-3 -->
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6">
               <div class="card team-member-card shadow pb-5">
                 <div class="card-body p-0 text-center">
                   <div class="team-member-img mt-4 rounded-circle">
                     <img src="images/team-4.jpg" alt="" />
                   </div>
-                  <h2 class="m-0 mt-3"><b>Full Name </b></h2>
+                  <h3 class="m-0 mt-3"><b>Full Name </b></h3>
                   <small class="fw-bold mb-3">Chef Valentina Cucina</small>
                   <div class="hidden-card-icon">
                     <div class="d-flex gap-3 justify-content-center">
@@ -339,13 +350,13 @@
             </div>
 
             <!-- member-4 -->
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-lg-3 col-sm-6">
               <div class="card team-member-card shadow pb-5">
                 <div class="card-body p-0 text-center">
                   <div class="team-member-img mt-4 rounded-circle">
                     <img src="images/team-1.jpg" alt="" />
                   </div>
-                  <h2 class="m-0 mt-3"><b>Full Name </b></h2>
+                  <h3 class="m-0 mt-3"><b>Full Name </b></h3>
                   <small class="fw-bold mb-3">Chef Gustavo Delicioso</small>
                   <div class="hidden-card-icon">
                     <div class="d-flex gap-3 justify-content-center">
@@ -362,7 +373,6 @@
         </div>
       </div>
       <!-- end of team-members -->
-      
       <!-- start of testimonial section -->
       <div class="container-xxl py-5">
         <div class="container pb-5">
@@ -376,7 +386,6 @@
           </div>
           <div class="slider">
             <div class="owl-carousel owl-theme mt-3">
-            
               <!-- item-1 -->
               <div class="slider-card">
                 <div class="item  border rounded p-4">
@@ -393,7 +402,7 @@
                   </div>
                 </div>
               </div>
-  
+          
               <!-- item-2 -->
               <div class="slider-card">
                 <div class="item border rounded p-4">
@@ -408,7 +417,7 @@
                   </div>
                 </div>
               </div>
-  
+          
               <!-- item-3 -->
               <div class="slider-card">
                 <div class="item border rounded p-4">
@@ -423,7 +432,7 @@
                   </div>
                 </div>
               </div>
-  
+          
               <!-- item-4 -->
               <div class="slider-card">
                 <div class="item border rounded p-4">
@@ -438,7 +447,7 @@
                   </div>
                 </div>
               </div>
-  
+          
               <!-- item 5 -->
               <div class="slider-card">
                 <div class="item border rounded p-4">
@@ -455,100 +464,95 @@
               </div>
             </div>
           </div>
-        </div>
+        </div>  
       </div>
       <!-- end of testimonial section -->
-      
-      <!-- start of footer -->
+      <!-- start-of-footer -->
       <footer class="container-fluid pt-5">
-        <div class="container p-0">
-            <div class="row g-5 pb-3">
-    
-              <!-- Company part -->
-              <div class="col-lg-3 col-md-6 company-content">
-                <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
-                  Company &#x2015;
-                </h5>
-                <a href="about.html" class="btn btn-link fw-bold pt-0 pb-1">About Us</a>
-                <a href="contact-us.html" class="btn btn-link fw-bold py-1">Contact Us</a>
-                <a href="booking.html" class="btn btn-link fw-bold py-1">Reservation</a>
-                <a href="" class="btn btn-link fw-bold py-1">Privacy Policy</a>
-                <a href="" class="btn btn-link fw-bold py-1">Terms & Condition</a>
+        <div class="container">
+          <div class="row g-5 pb-3">
+            <!-- Company part -->
+            <div class="col-lg-3 col-md-6 company-content">
+              <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
+                Company &#x2015;
+              </h5>
+              <a href="about.html" class="btn btn-link fw-bold pt-0 pb-1">About Us</a>
+              <a href="contact-us.html" class="btn btn-link fw-bold py-1">Contact Us</a>
+              <a href="booking.html" class="btn btn-link fw-bold py-1">Reservation</a>
+              <a href="" class="btn btn-link fw-bold py-1">Privacy Policy</a>
+              <a href="" class="btn btn-link fw-bold py-1">Terms & Condition</a>
+            </div>
+        
+            <!-- Contact Us part -->
+            <div class="col-lg-3 col-md-6 Contact-Us-content">
+              <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
+                Contact &#x2015;
+              </h5>
+              <div class="pb-2 pt-0">
+                <i class="fa-sharp fa-solid fa-location-dot me-2"></i> <p>123 Street, Nsukka, Nigeria</p>
               </div>
-    
-              <!-- Contact Us part -->
-              <div class="col-lg-3 col-md-6 Contact-Us-content">
-                <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
-                  Contact &#x2015;
-                </h5>
-                <div class="pb-2 pt-0">
-                  <i class="fa-sharp fa-solid fa-location-dot me-2"></i> <p>123 Street, Nsukka, Nigeria</p>
-                </div>
-                <div class="pb-2 pt-1">
-                  <i class="fa-solid fa-phone me-2"></i>
-                  <p>+2349051637235</p>
-                </div>
-                <div class="pb-2 pt-1">
-                  <i class="fa-solid fa-envelope me-2"></i>
-                  <p>alfred@gmail.com</p>
-                </div>
-                <div class="social-link py-2">
-                  <a href="" class="btn">
-                    <i class="fa-brands fa-x-twitter"></i>
-                  </a>
-                  <a href="" class="btn">
-                    <i class="fa-brands fa-facebook-f"></i>
-                  </a>
-                  <a href="" class="btn">
-                    <i class="fa-brands fa-youtube"></i>
-                  </a>
-                  <a href="" class="btn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                  </a>
-                </div>
+              <div class="pb-2 pt-1">
+                <i class="fa-solid fa-phone me-2"></i>
+                <p>+2349051637235</p>
               </div>
-    
-              <!-- Opening part -->
-              <div class="col-lg-3 col-md-6 Opening-content-footer">
-                <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
-                  Opening &#x2015;
-                </h5>
-                <p class=" fw-bold fs-5 m-0">Monday - Saturday</p>
-                <p class="m-0 py-2">09AM - 09PM</p>
-                <p class="fw-bold fs-5 m-0 pt-2">Sunday</p>
-                <p class="py-2">10AM - 08PM</p>
+              <div class="pb-2 pt-1">
+                <i class="fa-solid fa-envelope me-2"></i>
+                <p>alfred@gmail.com</p>
               </div>
-    
-              <!-- Newsletter part -->
-              <div class="col-lg-3 col-md-6 newsletter-content-footer">
-                <h5 class="fs-3 fw-bold lobster-style text-nowrap">
-                  Company &#x2015;
-                </h5>
-                <p>
-                  🍽️ Stay updated on <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>  delicious offerings by signing up for our newsletter, which includes exclusive offers and menu updates.
-                </p>
-                <form class="my-2">
-                  <div class="d-flex align-items-center gap-1 form-group">
-                    <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-                    <button type="submit" class="btn shiny-btn d-flex justify-content-center px-3 text-nowrap">Sign Up</button>
-                  </div>
-                </form>
+              <div class="social-link py-2">
+                <a href="" class="btn">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="" class="btn">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="" class="btn">
+                  <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="" class="btn">
+                  <i class="fa-brands fa-linkedin-in"></i>
+                </a>
               </div>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm d-grid d-md-flex gap-3 justify-content-between  pt-4 pb-4 px-4">
-                <p class="text-center">© <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>, All Right Reserved. Designed By HTML Codex</p>
-                <div class="d-flex gap-4 justify-content-center footer-menu">
-                  <a href="" class="p-0 btn">Terms</a>
-                  <a href="" class="p-0 btn">Cookie</a>
-                  <a href="" class="p-0 btn">Help</a>
+            <!-- Opening part -->
+            <div class="col-lg-3 col-md-6 Opening-content-footer">
+              <h5 class="fs-3 fw-bold lobster-style mb-4 text-nowrap">
+                Opening &#x2015;
+              </h5>
+              <p class=" fw-bold fs-5 m-0">Monday - Saturday</p>
+              <p class="m-0 py-2">09AM - 09PM</p>
+              <p class="fw-bold fs-5 m-0 pt-2">Sunday</p>
+              <p class="py-2">10AM - 08PM</p>
+            </div>
+            <!-- Newsletter part -->
+            <div class="col-lg-3 col-md-6 newsletter-content-footer">
+              <h5 class="fs-3 fw-bold lobster-style text-nowrap">
+                Company &#x2015;
+              </h5>
+              <p>
+                🍽️ Stay updated on <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>  delicious offerings by signing up for our newsletter, which includes exclusive offers and menu updates.
+              </p>
+              <form class="my-2">
+                <div class="d-flex align-items-center gap-1 form-group">
+                  <input type="email" class="form-control" id="email" placeholder="Enter email" required>
+                  <button type="submit" class="btn shiny-btn d-flex justify-content-center px-3 text-nowrap">Sign Up</button>
                 </div>
+              </form>
+            </div>          
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm d-grid d-md-flex gap-3 justify-content-between  pt-4 pb-4 px-4">
+              <p class="text-center">© <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>, All Right Reserved. Designed By HTML Codex</p>
+              <div class="d-flex gap-4 justify-content-center footer-menu">
+                <a href="" class="p-0 btn">Terms</a>
+                <a href="" class="p-0 btn">Cookie</a>
+                <a href="" class="p-0 btn">Help</a>
               </div>
             </div>
+          </div>          
         </div>
       </footer>
-     <!-- end of footer -->
     </div>    
   </body>
 

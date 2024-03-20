@@ -1,0 +1,16 @@
+.animate__animated h1{
+  color: var(--light);
+}
+.animate__animated a{
+  color: var(--light);
+}
+.animate__animated a:hover{
+  color: var(--bgHover);
+}
+.animate__animated a:nth-child(1)::after{
+  content: '|';
+  padding-inline: 0.5rem;
+}
+.animate__animated a:nth-child(1):hover:after{
+  color: var(--light);
+}

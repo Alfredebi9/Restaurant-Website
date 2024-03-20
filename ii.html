@@ -1,54 +1,178 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bootstrap Nav Tabs with Underline Effect</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-  .nav-tabs .nav-link {
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-  }
-  .nav-tabs .nav-link.active {
-    border-color: #007bff;
-  }
-</style>
-</head>
-<body>
-
-<div class="container mt-5">
-  <ul class="nav nav-tabs">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#tab1">Tab 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#tab2">Tab 2</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#tab3">Tab 3</a>
-    </li>
-  </ul>
-
-  <div class="tab-content mt-3">
-    <div id="tab1" class="tab-pane fade show active">
-      <h3>Tab 1 Content</h3>
-      <p>This is the content of Tab 1.</p>
+<!--start of navbar -->
+<header class="container-fluid z-3 sticky-top p-0 ">
+  <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
+    <a href="index.html" class="navbar-brand fs-1">
+      <h2 class="m-0">
+        <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
+      </h2>
+    </a>
+    <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+          <li class="nav-item">
+            <a class="nav-link nav-item active" aria-current="page" href="index.html" >HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item" href="Menu.html">MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item" href="about.html">ABOUT US</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-item" href="contact-us.html">CONTACT US</a>
+          </li>
+          <li class="nav-item dropdown" id="content">
+            <a href="" class="nav-link nav-item dropdown-toggle" role="button"  data-bs-toggle="dropdown" >
+              MORE
+            </a>
+            <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
+              <li><a href="booking.html" class="dropdown-item">BOOKING</a></li>
+              <li><a href="testimonial.html" class="dropdown-item">TESTIMONIAL</a></li>
+            </ul>
+          </li>
+          <a  class="btn small-btn shiny-btn px-4 ms-lg-3" role="button" href="login.html">LOG IN</a>                   
+        </ul>
+      </div>
     </div>
-    <div id="tab2" class="tab-pane fade">
-      <h3>Tab 2 Content</h3>
-      <p>This is the content of Tab 2.</p>
+  </nav>
+</header>
+<!-- end of navbar -->
+<div style="background-image: linear-gradient(to right, rgba(15, 12, 41, 0.9), rgba(48, 43, 99, 0.9), rgba(35, 35, 62, 0.9)),  url('images/bg-hero.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+  <!--start of hero-section-->
+  <article class="container-xxl py-5 m-auto">
+    <div class="container-xxl">
+      <div class="row g-4 m-auto align-items-center">
+        <div class="animate__animated animate__slideInLeft col-lg-6" id="hero-content">
+          <h1 id="hero-header-text">
+          <b>
+            <span class="lobster-style">Enjoy</span> Our <br>
+            Delicious <span class="lobster-style">Meal</span>
+          </b>
+          </h1>
+          <p class="mb-4">
+            Indulge your senses in a symphony of flavors at <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span> , where culinary artistry meets heartfelt hospitality. We believe that every meal is a celebration, and we invite you to join us on a journey of exquisite tastes and unforgettable moments.
+          </p>
+          <a class="btn shiny-btn" role="button" href="booking.html">Book A Table</a>
+        </div>
+        <div class="img-section col-lg-6">
+          <div class="img-container ps-lg-2 w-100 overflow-hidden">
+          <img loading="lazy" src="images/hero.png" alt="Circular Animation Image" class="img-fluid circle-image">
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="tab3" class="tab-pane fade">
-      <h3>Tab 3 Content</h3>
-      <p>This is the content of Tab 3.</p>
+  </article>
+</div>  
+<!-- end of hero section -->
+
+
+
+
+
+
+<div id="lunch" class="container tab-pane fade">
+  <div class="row">
+    <div class="col-lg-7 col-md-12">
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="img/menu-snack.jpg" alt="Image">
+        </div>
+        <div class="menu-text">
+          <h3><span>Corn Tikki - Spicy fried Aloo</span> <strong>$15.00</strong></h3>
+          <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="img/menu-snack.jpg" alt="Image">
+        </div>
+        <div class="menu-text">
+          <h3><span>Bread besan Toast</span> <strong>$35.00</strong></h3>
+          <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="img/menu-snack.jpg" alt="Image">
+        </div>
+        <div class="menu-text">
+          <h3><span>Healthy soya nugget snacks</span> <strong>$20.00</strong></h3>
+          <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-img">
+          <img src="img/menu-snack.jpg" alt="Image">
+        </div>
+        <div class="menu-text">
+          <h3><span>Tandoori Soya Chunks</span> <strong>$30.00</strong></h3>
+          <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 d-none d-lg-block">
+      <img src="img/menu-snack-img.jpg" alt="Image">
     </div>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+  <div id="dinner" class="container tab-pane fade">
+    <div class="row">
+      <div class="col-lg-7 col-md-12">
+        <div class="menu-item">
+          <div class="menu-img">
+            <img src="img/menu-beverage.jpg" alt="Image">
+          </div>
+          <div class="menu-text">
+            <h3><span>Single Cup Brew</span> <strong>$7.00</strong></h3>
+            <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-img">
+            <img src="img/menu-beverage.jpg" alt="Image">
+          </div>
+          <div class="menu-text">
+            <h3><span>Caffe Americano</span> <strong>$9.00</strong></h3>
+            <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-img">
+            <img src="img/menu-beverage.jpg" alt="Image">
+          </div>
+          <div class="menu-text">
+            <h3><span>Caramel Macchiato</span> <strong>$15.00</strong></h3>
+            <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-img">
+            <img src="img/menu-beverage.jpg" alt="Image">
+          </div>
+          <div class="menu-text">
+            <h3><span>Standard black coffee</span> <strong>$8.00</strong></h3>
+            <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-img">
+            <img src="img/menu-beverage.jpg" alt="Image">
+          </div>
+          <div class="menu-text">
+            <h3><span>Standard black coffee</span> <strong>$12.00</strong></h3>
+            <p>Lorem ipsum dolor sit amet elit. Phasel nec preti facil</p>
+          </div>
+       </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block">
+        <img src="img/menu-beverage-img.jpg" alt="Image">
+      </div>
+    </div>
+  </div>
