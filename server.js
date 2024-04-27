@@ -73,6 +73,6 @@ app.post("/login-user", (req, res) => {
   })
 });
 
-app.listen(3000, () => {
-  console.log("listening on port 3000 .....");
+app.listen(5432, () => {
+  console.log("listening on port 5432 .....");
 });
