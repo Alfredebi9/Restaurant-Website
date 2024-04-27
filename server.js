@@ -18,7 +18,7 @@ const app = express();
 let initialPath = path.join(__dirname, "public");
 app.use(bodyParser.json());
 
-app.use(express.static(initialPath));
+// app.use(express.static(initialPath));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(initialPath, "index.html"));
@@ -73,6 +73,7 @@ app.post("/login-user", (req, res) => {
   })
 });
 
-// app.listen(5432, () => {
-//   console.log("listening on port 5432 .....");
-// });
+const PORT = process.env.PORT || 3000; // Use the assigned port or default to 3000
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
