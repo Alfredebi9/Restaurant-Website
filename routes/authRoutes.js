@@ -144,7 +144,7 @@ router.post("/forgot-password", async (req, res) => {
     }
     // Generate a password reset token and send it to the user's email
     const resetToken = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
-    const resetLink = `https://restaurant-website-seven-tau.vercel.app/reset-password?token=${resetToken}`;
+    const resetLink = ` https://t-house.vercel.app/reset-password?token=${resetToken}`;
 
     const mailOptions = {
       from: EMAIL_USER,
