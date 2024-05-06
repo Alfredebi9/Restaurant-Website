@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
       from: EMAIL_USER,
       to: email,
       subject: `Email Confirmation - 🍽T-HOUSE`,
-      html: '<h1>Welcome to CRUD</h1> Click the link below to verify your email <br> https://restaurant-website-seven-tau.vercel.app/verify/' + newUser._id
+      html: '<h1>Welcome to CRUD</h1> Click the link below to verify your email <br> https://t-house.vercel.app/verify/' + newUser._id
     };
     // Function to send email using nodemailer with promises
     transporter.sendMail(mailOptions, (error, info) => {
@@ -50,7 +50,7 @@ router.post("/register", async (req, res) => {
     console.log(`Email sent: ${process.env.EMAIL_USER}`);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error registering user");
+    res.status(500).send("Error registering user"+ error.message);
   }
 });
 

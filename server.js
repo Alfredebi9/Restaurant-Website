@@ -10,24 +10,14 @@ const authenticateToken = require("./middleware/authMiddleware");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Middleware to set the correct MIME type for CSS files
-app.use((req, res, next) => {
-  if (req.url.endsWith('.css')) {
-    res.set('Content-Type', 'text/css');
-  }
-  next();
-});
-
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/", authRoutes);
+app.use(authRoutes);
 
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get("/protected", authenticateToken, (req, res) => {
