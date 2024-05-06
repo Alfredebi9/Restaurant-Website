@@ -39,19 +39,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Check if the 'username' cookie exists
+  const usernameCookie = document.cookie.split('; ').find(row => row.startsWith('username='));
+  
+  if (usernameCookie) {
+    const username = usernameCookie.split('=')[1];
+    document.getElementById('username-placeholder').innerText = username;
+  } else {
+    document.getElementById('username-placeholder').innerText = 'Guest';
+  }
 
-  // const greeting = document.querySelector(".greeting");
-  // window.onload = () => {
-  //   if (!sessionStorage.name) {
-  //     location.href = "/login";
-  //   } else {
-  //     greeting.innerHTML = `Hello ${sessionStorage.name}`;
-  //   }
-  // };
-  // const logOut = document.querySelector(".logout");
-  
-  // logOut.onclick = () => {
-  //   sessionStorage.clear();
-  //   location.reload();
-  // };
-  
+  function logout() {
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href = '/logout';
+  }
+
+
+
