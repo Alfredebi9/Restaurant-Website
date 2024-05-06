@@ -9,6 +9,9 @@ const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_USER = process.env.EMAIL_USER;
 
+
+
+
 // Registration Post action
 router.post("/register", async (req, res) => {
   try {
