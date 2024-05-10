@@ -69,6 +69,13 @@ a {
   color: var(--light);
 }
 
+#user-profile{
+  color: var(--bgHover);
+}
+#user-profile:hover, #user-profile:focus{
+  color: var(--light);
+}
+
 .lobster-style {
   color: var(--primary);
   font-family: "Lobster Two", sans-serif;
@@ -78,7 +85,6 @@ nav,
 .dropdown-menu {
   background-color: var(--bgColor2);
   background: var(--bgColor);
-  /* opacity: .9; */
 }
 
 .shiny-btn {

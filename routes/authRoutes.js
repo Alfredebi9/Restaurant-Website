@@ -23,18 +23,19 @@ router.post("/register", async (req, res) => {
     }
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    // Create a new user instance
+    // Creating new user instance
     const newUser = new User({ username, email, password: hashedPassword });
     // Save the user to the database
     await newUser.save();
+    const verificationLink = `https://t-house.vercel.app/verify/${newUser._id }`;
     // send verification email
     const mailOptions = {
       from: EMAIL_USER,
       to: email,
       subject: `Email Confirmation - 🍽T-HOUSE`,
-      html: '<h1>Welcome to CRUD</h1> Click the link below to verify your email <br> https://t-house.vercel.app/verify/' + newUser._id
+      html: `<h1>Welcome to CRUD</h1> Click the link below to verify your email <br> <a href="${verificationLink}">${verificationLink}</a>`
     };
-    // Function to send email using nodemailer with promises
+    // Function to send email using nodemailer
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
@@ -54,7 +55,7 @@ router.post("/register", async (req, res) => {
   }
 });
 
-// login POST action
+// login POST function
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -83,7 +84,7 @@ router.post("/login", async (req, res) => {
 });
 
 
-// reset password POST action
+// reset password POST function
 router.post("/reset-password", async (req, res) => {
   try {
     const { token, newPassword } = req.body;
@@ -116,11 +117,10 @@ router.get("/verify/:userId", async (req, res) => {
     if (!user) {
       return res.status(404).send("User not found");
     }
-    // Set the user's verified status to true
+    // Set the user's verification to true
     user.verified = true;
     await user.save();
 
-    // After setting verification to true, redirect to the login page
     res.redirect("/login");
   } catch (error) {
     console.error(error);
@@ -169,7 +169,7 @@ router.post("/forgot-password", async (req, res) => {
 });
 
 
-// Your reset password route logic
+// reset password route logic
 router.get("/reset-password", (req, res) => {
   const token = req.query.token;
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
@@ -187,10 +187,33 @@ router.get("/reset-password", (req, res) => {
 router.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "register.html"));
 });
-
 // Serve as login page
 router.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "login.html"));
+});
+// Serve as about page
+router.get("/about", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "about.html"));
+});
+// Serve as booking page
+router.get("/booking", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "booking.html"));
+});
+// Serve as contact-us page
+router.get("/contact", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "contact-us.html"));
+});
+// Serve as menu page
+router.get("/menu", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "menu.html"));
+});
+// Serve as testimonial page
+router.get("/testimonial", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "testimonial.html"));
+});
+// Serve as legal page
+router.get("/legal", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "legal.html"));
 });
 
 // route for logging out

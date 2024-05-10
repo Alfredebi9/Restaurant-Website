@@ -33,7 +33,7 @@
     <!--start of navbar -->
     <header class="container-fluid z-3 sticky-top p-0 ">
       <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
-        <a href="index.html" class="navbar-brand fs-1">
+        <a href="/" class="navbar-brand fs-1">
           <h2 class="m-0">
             <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
           </h2>
@@ -43,33 +43,36 @@
         </button>
         <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
+            <h5 class="offcanvas-title text-light greeting" id="navbarContentLabel">Welcome, <span id="username-placeholder"></span></h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
               <li class="nav-item">
-                <a class="nav-link nav-item" aria-current="page" href="index.html" >HOME</a>
+                <a class="nav-link nav-item" aria-current="page" href="/" >HOME</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item active" href="Menu.html">MENU</a>
+                <a class="nav-link nav-item active" href="/menu">MENU</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item" href="about.html">ABOUT US</a>
+                <a class="nav-link nav-item" href="/about">ABOUT US</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item" href="contact-us.html">CONTACT US</a>
+                <a class="nav-link nav-item" href="/contact">CONTACT US</a>
               </li>
               <li class="nav-item dropdown" id="content">
                 <a href="" class="nav-link nav-item dropdown-toggle" role="button"  data-bs-toggle="dropdown" >
                   MORE
                 </a>
                 <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
-                  <li><a href="booking.html" class="dropdown-item">BOOKING</a></li>
-                  <li><a href="testimonial.html" class="dropdown-item">TESTIMONIAL</a></li>
+                  <li><a href="/booking" class="dropdown-item">BOOKING</a></li>
+                  <li><a href="/testimonial" class="dropdown-item">TESTIMONIAL</a></li>
                 </ul>
               </li>
-              <a  class="btn small-btn shiny-btn px-4 ms-lg-3" role="button" href="login.html">LOG IN</a>                   
+              <button  class="btn small-btn shiny-btn px-2 ms-lg-3 logout" role="button" onclick="logout()">LOG OUT</button>   
+              <button type="button" class="btn shiny-btn rounded-circle d-flex align-items-center px-2 border-0 d-lg-block d-none" id="user-profile" data-bs-toggle="tooltip" data-bs-placement="bottom" datat title="">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
+              </button>                     
             </ul>
           </div>
         </div>
@@ -86,8 +89,8 @@
             </h1>
           </div>
           <div class="animate__animated animate__slideInLeft text-center">
-            <a href="index.html" role="button">HOME</a>
-            <a href="Menu.html" role="button">MENU</a>
+            <a href="/" role="button">HOME</a>
+            <a href="/menu" role="button">MENU</a>
           </div>
         </div>
       </div>
@@ -141,7 +144,7 @@
                    <!-- first part -->
                    <div class="col-md-6">
                      <div class="d-flex align-items-center">
-                       <img class="flex-shrink-0 img-fluid rounded-circle" src="images/bg-hero.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                       <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/bg-hero.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                        <div class="w-100 d-flex flex-column text-start ps-4">
                            <h5 class="d-flex justify-content-between border-bottom pb-2">
                                <span>Grilled Meat</span>
@@ -154,7 +157,7 @@
                    <!-- 2nd part -->
                    <div class="col-md-6">
                      <div class="d-flex align-items-center">
-                       <img class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-beverage.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                       <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-beverage.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                        <div class="w-100 d-flex flex-column text-start ps-4">
                            <h5 class="d-flex justify-content-between border-bottom pb-2">
                                <span>Single Cup Brew</span>
@@ -167,7 +170,7 @@
                    <!-- 3rd part -->
                    <div class="col-md-6">
                      <div class="d-flex align-items-center">
-                       <img class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-burger.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                       <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-burger.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                        <div class="w-100 d-flex flex-column text-start ps-4">
                            <h5 class="d-flex justify-content-between border-bottom pb-2">
                                <span>Chicken Burger</span>
@@ -180,7 +183,7 @@
                    <!-- 4th part -->
                    <div class="col-md-6">
                      <div class="d-flex align-items-center">
-                       <img class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-snack.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                       <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-snack.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                        <div class="w-100 d-flex flex-column text-start ps-4">
                            <h5 class="d-flex justify-content-between border-bottom pb-2">
                                <span>Corn Tikki - Spicy fried Aloo</span>
@@ -193,7 +196,7 @@
                    <!-- 5th part -->
                    <div class="col-md-6">
                     <div class="d-flex align-items-center">
-                      <img class="flex-shrink-0 img-fluid rounded-circle" src="images/alexandru-bogdan-ghita-UeYkqQh4PoI-unsplash.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                      <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/alexandru-bogdan-ghita-UeYkqQh4PoI-unsplash.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                       <div class="w-100 d-flex flex-column text-start ps-4">
                           <h5 class="d-flex justify-content-between border-bottom pb-2">
                               <span>Grilled Vegetable Fish</span>
@@ -206,7 +209,7 @@
                    <!-- 6th part -->
                    <div class="col-md-6">
                     <div class="d-flex align-items-center">
-                      <img class="flex-shrink-0 img-fluid rounded-circle" src="images/bg-hero.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                      <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/bg-hero.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                       <div class="w-100 d-flex flex-column text-start ps-4">
                           <h5 class="d-flex justify-content-between border-bottom pb-2">
                               <span>Grilled Meat</span>
@@ -219,7 +222,7 @@
                    <!-- 7th part -->
                    <div class="col-md-6">
                     <div class="d-flex align-items-center">
-                      <img class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-snack.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                      <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-snack.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                       <div class="w-100 d-flex flex-column text-start ps-4">
                           <h5 class="d-flex justify-content-between border-bottom pb-2">
                               <span>Corn Tikki - Spicy fried Aloo</span>
@@ -232,7 +235,7 @@
                    <!-- 8th part -->
                    <div class="col-md-6">
                     <div class="d-flex align-items-center">
-                      <img class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-burger.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
+                      <img loading="lazy" class="flex-shrink-0 img-fluid rounded-circle" src="images/menu-burger.jpg" alt="" style="width: 80px; aspect-ratio: 1;">
                       <div class="w-100 d-flex flex-column text-start ps-4">
                           <h5 class="d-flex justify-content-between border-bottom pb-2">
                               <span>Chicken Burger</span>

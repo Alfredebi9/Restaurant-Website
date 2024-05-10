@@ -38,7 +38,7 @@
     <!--start of navbar -->
     <header class="container-fluid z-3 sticky-top p-0 ">
       <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
-        <a href="index.html" class="navbar-brand fs-1">
+        <a href="/" class="navbar-brand fs-1">
           <h2 class="m-0">
             <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
           </h2>
@@ -48,33 +48,36 @@
         </button>
         <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
+            <h5 class="offcanvas-title text-light greeting" id="navbarContentLabel">Welcome, <span id="username-placeholder"></span></h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
               <li class="nav-item">
-                <a class="nav-link nav-item" aria-current="page" href="index.html" >HOME</a>
+                <a class="nav-link nav-item" aria-current="page" href="/" >HOME</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item" href="Menu.html">MENU</a>
+                <a class="nav-link nav-item" href="/menu">MENU</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item" href="about.html">ABOUT US</a>
+                <a class="nav-link nav-item" href="/about">ABOUT US</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-item active" href="contact-us.html">CONTACT US</a>
+                <a class="nav-link nav-item active" href="/contact">CONTACT US</a>
               </li>
               <li class="nav-item dropdown" id="content">
                 <a href="" class="nav-link nav-item dropdown-toggle" role="button"  data-bs-toggle="dropdown" >
                   MORE
                 </a>
                 <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
-                  <li><a href="booking.html" class="dropdown-item">BOOKING</a></li>
-                  <li><a href="testimonial.html" class="dropdown-item">TESTIMONIAL</a></li>
+                  <li><a href="/booking" class="dropdown-item">BOOKING</a></li>
+                  <li><a href="/testimonial" class="dropdown-item">TESTIMONIAL</a></li>
                 </ul>
               </li>
-              <a  class="btn small-btn shiny-btn px-4 ms-lg-3" role="button" href="login.html">LOG IN</a>                   
+              <button  class="btn small-btn shiny-btn px-2 ms-lg-3 logout" role="button" onclick="logout()">LOG OUT</button>   
+              <button type="button" class="btn shiny-btn rounded-circle d-flex align-items-center px-2 border-0 d-lg-block d-none" id="user-profile" data-bs-toggle="tooltip" data-bs-placement="bottom" datat title="">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
+              </button>            
             </ul>
           </div>
         </div>
@@ -91,8 +94,8 @@
             </h1>
           </div>
           <div class="animate__animated animate__slideInLeft text-center">
-            <a href="index.html" role="button">HOME</a>
-            <a href="contact-us.html" role="button">CONTACT</a>
+            <a href="/" role="button">HOME</a>
+            <a href="/contact" role="button">CONTACT</a>
           </div>
         </div>
       </div>

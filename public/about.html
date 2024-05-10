@@ -33,7 +33,7 @@
     <!--start of navbar -->
     <header class="container-fluid fixed-top p-0">
       <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
-        <a href="index.html" class="navbar-brand fs-1">
+        <a href="/" class="navbar-brand fs-1">
           <h2 class="m-0">
             <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
           </h2>
@@ -43,7 +43,7 @@
         </button>
         <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title text-light" id="navbarContentLabel">Menu</h5>
+            <h5 class="offcanvas-title text-light greeting" id="navbarContentLabel">Welcome, <span id="username-placeholder"></span></h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           <div class="offcanvas-body">
@@ -60,6 +60,10 @@
               <li class="nav-item">
                 <a class="nav-link nav-item" href="#our-team">Our Team</a>
               </li>
+              <button  class="btn small-btn shiny-btn px-2 ms-lg-3 logout" role="button" onclick="logout()">LOG OUT</button>   
+              <button type="button" class="btn shiny-btn rounded-circle d-flex align-items-center px-2 border-0 d-lg-block d-none" id="user-profile" data-bs-toggle="tooltip" data-bs-placement="bottom" datat title="">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
+              </button>   
             </ul>
           </div>
         </div>
@@ -76,8 +80,8 @@
             </h1>
           </div>
           <div class="animate__animated animate__slideInLeft text-center">
-            <a href="index.html" role="button">HOME</a>
-            <a href="about.html" role="button">ABOUT US</a>
+            <a href="/" role="button">HOME</a>
+            <a href="/about" role="button">ABOUT US</a>
           </div>
         </div>
       </div>
