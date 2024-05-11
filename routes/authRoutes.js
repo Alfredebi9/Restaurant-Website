@@ -205,7 +205,7 @@ router.post("/news-form", (req, res) => {
   const mailOptions = {
     from: 'alfredsalvadorfav@gmail.com',
     to: EMAIL_USER,
-    subject: 'New Booking Request', // subject line
+    subject: 'News letter Request', // subject line
     html: `
           <h2>News letter Request</h2>
           <p><strong>Email:</strong> ${email}</p>

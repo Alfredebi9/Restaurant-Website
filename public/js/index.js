@@ -53,34 +53,37 @@ document.addEventListener('DOMContentLoaded', function (event) {
   } else {
     document.getElementById('username-placeholder').innerText = 'Guest';
   }
-  
-  function logout() {
-    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    window.location.href = '/logout';
-  }
+ 
 
-
-  document.getElementById('booking-form').addEventListener('submit', function (event) {
-    event.preventDefault(); // Prevent the default form submission behavior
+  // document.getElementById('booking-form').addEventListener('submit', function (event) {
+  //   event.preventDefault(); // Prevent the default form submission behavior
   
-    // Fetch the form data
-    const formData = new FormData(this);
+  //   // Fetch the form data
+  //   const formData = new FormData(this);
   
-    // Send the form data to the server
-    fetch('/submit-form')
-      .then(response => response.json())
-      .then(data => {
-        // Target the p element with id "displaymessage"
-        const messageParagraph = document.getElementById('displaymessage');
-        // Set the innerHTML of the paragraph to the JSON message
-        messageParagraph.innerHTML = JSON.stringify(data, null, 2);
-      })
-      .catch(error => console.error('Error:', error));
-  });
+  //   // Send the form data to the server
+  //   fetch('/submit-form', {
+  //     method: 'POST',
+  //     body: formData,
+  //   })
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // Target the p element with id "displaymessage"
+  //       const messageParagraph = document.getElementById('displaymessage');
+  //       // Set the innerHTML of the paragraph to the JSON message
+  //       messageParagraph.innerHTML = JSON.stringify(data, null, 2);
+  //     })
+  //     .catch(error => console.error('Error:', error));
+  // });
   
 });
 
 
 
 
+ 
+function logout() {
+  document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+  window.location.href = '/logout';
+}
