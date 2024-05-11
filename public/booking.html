@@ -117,41 +117,30 @@
               <h2>
                 Book A Table Online
               </h2>
-              <form>
+              <form action="/submit-form" method="POST" id="booking-form">
+                <p id="displaymessage"></p>
                 <div class="row g-3">
                   <div class="col-12">
                     <div class="form-floating">
-                      <input type="text" class="form-control" id="name" placeholder="Your Name">
+                      <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" required>
                       <label for="name">Your Name</label>
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <div class="form-floating date" id="date3" data-target-input="nearest">
-                      <input type="date" class="form-control datetimepicker-input" id="datePicker" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker" />
-                      <label for="datePicker">Date</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-floating date" id="time3" data-target-input="nearest">
-                      <input type="time" class="form-control datetimepicker-input" id="timePicker" placeholder="Date & Time" data-target="#time3" data-toggle="datetimepicker" />
-                      <label for="timePicker">Time</label>
-                    </div>
-                  </div>     
-                  <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="email" class="form-control" id="email" placeholder="Your Email">
+                      <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" required>
                       <label for="email">Your Email</label>
                     </div>
                   </div>             
                   <div class="col-md-6">
                     <div class="form-floating">
-                      <input type="number" class="form-control datetimepicker-input" id="datetime" placeholder="Date & Time" data-target="#date3" data-toggle="datetimepicker">
-                      <label for="select1">No Of People</label>
+                      <input type="number" class="form-control datetimepicker-input" placeholder="No Of People" name="people_No" required>
+                      <label for="people_No">No Of People</label>
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="form-floating">
-                      <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px"></textarea>
+                      <textarea class="form-control" placeholder="Special Request" id="message" style="height: 100px" name="message" required></textarea>
                       <label for="message">Special Request</label>
                     </div>
                   </div>

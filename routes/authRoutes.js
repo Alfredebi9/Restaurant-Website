@@ -27,7 +27,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword });
     // Save the user to the database
     await newUser.save();
-    const verificationLink = `https://t-house.vercel.app/verify/${newUser._id }`;
+    const verificationLink = `https://t-house.vercel.app/verify/${newUser._id}`;
     // send verification email
     const mailOptions = {
       from: EMAIL_USER,
@@ -51,7 +51,7 @@ router.post("/register", async (req, res) => {
     console.log(`Email sent: ${process.env.EMAIL_USER}`);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error registering user"+ error.message);
+    res.status(500).send("Error registering user" + error.message);
   }
 });
 
@@ -168,6 +168,63 @@ router.post("/forgot-password", async (req, res) => {
   }
 });
 
+// booking form route
+router.post("/submit-form", (req, res) => {
+  //get data from input
+  const { name, email, people_No, message } = req.body;
+
+  const mailOptions = {
+    from: 'alfredsalvadorfav@gmail.com',
+    to: EMAIL_USER,
+    subject: 'New Booking Request', // subject line
+    html: `
+          <h2>New Booking Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>No Of People:</strong> ${people_No}</p>
+          <p><strong>Special Request:</strong> ${message}</p>
+          `
+  }
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send(`Error: unable to book meal`)
+    } else {
+      console.log(`Email sent: ${info.response}`);
+      res.send(`Booking request submitted successfully`);
+    }
+  });
+});
+
+// newsletter form route
+router.post("/news-form", (req, res) => {
+  //get data from input
+  const { email } = req.body;
+
+  const mailOptions = {
+    from: 'alfredsalvadorfav@gmail.com',
+    to: EMAIL_USER,
+    subject: 'New Booking Request', // subject line
+    html: `
+          <h2>News letter Request</h2>
+          <p><strong>Email:</strong> ${email}</p>
+          `
+  }
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send(`Error: unable to book meal`)
+    } else {
+      console.log(`Email sent: ${info.response}`);
+      res.send(`news letter request submitted successfully`);
+    }
+  });
+});
+
+
+
 
 // reset password route logic
 router.get("/reset-password", (req, res) => {
@@ -179,9 +236,6 @@ router.get("/reset-password", (req, res) => {
     res.sendFile(path.join(__dirname, "..", "public", "reset-password.html"));
   });
 });
-
-
-
 
 // Serve registration page
 router.get("/register", (req, res) => {
