@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>T-HOUSE</title>
+    <title>BiteBuzz</title>
 
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -30,16 +30,17 @@
     <!-- owl carousel -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- favicon link -->
+    <link rel="icon" type="image/x-icon" href="images/favicon_io/favicon.ico">
   </head>
   <body>
     <div class="container-xxl bg-white p-0 position-relative">
       <!--start of navbar -->
       <header class="container-fluid z-3 sticky-top p-0 ">
         <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
-          <a href="/" class="navbar-brand fs-1">
-            <h2 class="m-0">
-              <i class="fa-sharp fa-solid fa-fork-knife"></i> T-HOUSE
-            </h2>
+          <a href="/" class="navbar-brand p-0">
+            <img src="images/logo.png" alt="" class="img-fluid "style="width: 65px;">
           </a>
           <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -58,9 +59,6 @@
                   <a class="nav-link nav-item" href="/menu">MENU</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link nav-item" href="/about">ABOUT US</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link nav-item" href="/contact">CONTACT US</a>
                 </li>
                 <li class="nav-item dropdown" id="content">
@@ -69,7 +67,7 @@
                   </a>
                   <ul class="dropdown-menu border border-0" aria-labelledby="navbarDropdown">
                     <li><a href="/booking" class="dropdown-item">BOOKING</a></li>
-                    <li><a href="/testimonial" class="dropdown-item">TESTIMONIAL</a></li>
+                    <li><a class="dropdown-item" href="/about">ABOUT US</a></li>
                   </ul>
                 </li>
                 <button  class="btn small-btn shiny-btn px-2 ms-lg-3 logout" role="button" onclick="logout()">LOG OUT</button>   
@@ -95,7 +93,7 @@
                 </b>
                 </h1>
                 <p class="mb-4">
-                  Indulge your senses in a symphony of flavors at <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span> , where culinary artistry meets heartfelt hospitality. We believe that every meal is a celebration, and we invite you to join us on a journey of exquisite tastes and unforgettable moments.
+                  Indulge your senses in a symphony of flavors at <span class="fs-5 text-nowrap lobster-style">BiteBuzz</span> , where culinary artistry meets heartfelt hospitality. We believe that every meal is a celebration, and we invite you to join us on a journey of exquisite tastes and unforgettable moments.
                 </p>
                 <a class="btn shiny-btn" role="button" href="/booking">Book A Table</a>
               </div>
@@ -203,13 +201,13 @@
                     About Us &#x2015;
                   </p>
                   <h4 class="fw-bold fs-1 mb-3">
-                    Welcome to <span class="h3 text-nowrap lobster-style"><i class='bx bx-bowl-hot'></i>T-HOUSE</span>
+                    Welcome to <span class="h3 text-nowrap lobster-style"><i class='bx bx-bowl-hot'></i>BiteBuzz</span>
                   </h4>
                 </div>
                 <p>
-                  A unique eating experience is provided by the gastronomic restaurant <span class="text-nowrap lobster-style">T-HOUSE</span>. The restaurant creates a symphony of flavours by fusing innovation and tradition with locally sourced ingredients. The skilled cooks produce works of art that are memorable. The warm ambiance of the restaurant is ideal for both quiet evenings and large parties. Every piece of food at <span class="text-nowrap lobster-style">T-HOUSE</span> tells a narrative and evokes memories that remain long beyond the final meal. It's a place where passion meets palate.
+                  A unique eating experience is provided by the gastronomic restaurant <span class="text-nowrap lobster-style">BiteBuzz</span>. The restaurant creates a symphony of flavours by fusing innovation and tradition with locally sourced ingredients. The skilled cooks produce works of art that are memorable. The warm ambiance of the restaurant is ideal for both quiet evenings and large parties. Every piece of food at <span class="text-nowrap lobster-style">BiteBuzz</span> tells a narrative and evokes memories that remain long beyond the final meal. It's a place where passion meets palate.
                 </p>
-                <a class="btn shiny-btn" href="/about">Read More</a>
+                <a class="btn shiny-btn abt-btn" href="/about">Read More</a>
               </div>
             </div>
           </div>
@@ -472,7 +470,7 @@
               <a href="/contact" class="btn btn-link fw-bold py-1">Contact Us</a>
               <a href="/booking" class="btn btn-link fw-bold py-1">Reservation</a>
               <a href="/legal" class="btn btn-link fw-bold py-1">Privacy Policy</a>
-              <a href="/legal" class="btn btn-link fw-bold py-1">Terms & Condition</a>
+              <a href="/legal#policy" class="btn btn-link fw-bold py-1">Terms & Condition</a>
             </div>
         
             <!-- Contact Us part -->
@@ -522,7 +520,7 @@
                 Company &#x2015;
               </h5>
               <p>
-                🍽️ Stay updated on <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>  delicious offerings by signing up for our newsletter, which includes exclusive offers and menu updates.
+                🍽️ Stay updated on <span class="fs-5 text-nowrap lobster-style">BiteBuzz</span>  delicious offerings by signing up for our newsletter, which includes exclusive offers and menu updates.
               </p>
               <form action="/news-form" method="POST" class="my-2">
                 <div class="d-flex align-items-center gap-1 form-group">
@@ -536,7 +534,7 @@
           <hr>
           <div class="row">
             <div class="col-sm d-grid d-md-flex pt-4 pb-4 px-4">
-              <p class="text-center">© <span class="fs-5 text-nowrap lobster-style">T-HOUSE</span>, All Right Reserved. Designed By Okechukwu Favour Chinemerem</p>
+              <p class="text-center">© <span class="fs-5 text-nowrap lobster-style">BiteBuzz</span>, All Right Reserved. Designed By Okechukwu Favour Chinemerem</p>
             </div>
           </div>          
         </div>

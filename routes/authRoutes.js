@@ -261,10 +261,7 @@ router.get("/contact", (req, res) => {
 router.get("/menu", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "menu.html"));
 });
-// Serve as testimonial page
-router.get("/testimonial", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "testimonial.html"));
-});
+
 // Serve as legal page
 router.get("/legal", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "legal.html"));

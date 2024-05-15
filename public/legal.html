@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal</title>
+     <!-- bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+     <!-- custom css -->
+    <link rel="stylesheet" href="css/index.css">
+  
+    <!-- fontawsome style -->
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+
+    <!-- animation -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    
+    <!-- favicon link -->
+    <link rel="icon" type="image/x-icon" href="images/favicon_io/favicon.ico">
+</head>
+<body>
+  <div class="container-xxl p-0" style="background: #b9d8f7;">
+    <!--start of navbar -->
+    <header class="container-fluid z-3 sticky-top p-0 ">
+      <nav class=" navbar navbar-expand-lg px-4 py-2 navbar-dark">
+        <a href="/" class="navbar-brand p-0">
+          <img src="images/logo.png" alt="" class="img-fluid "style="width: 60px;">
+        </a>
+        <button class="navbar-toggler " type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-start w-75" tabindex="-1" id="navbarContent" aria-labelledby="navbarContentLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-light greeting" id="navbarContentLabel">Welcome, <span id="username-placeholder"></span></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+              <li class="nav-item">
+                <a class="nav-link nav-item" aria-current="page" href="#T&C" >Terms & condition</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-item" href="#policy">Policy</a>
+              </li>
+              <button  class="btn small-btn shiny-btn px-2 ms-lg-3 logout" role="button" onclick="logout()">LOG OUT</button>   
+              <button type="button" class="btn shiny-btn rounded-circle d-flex align-items-center px-2 border-0 d-lg-block d-none" id="user-profile" data-bs-toggle="tooltip" data-bs-placement="bottom" datat title="">
+                <i class="fa-solid fa-circle-user fa-lg"></i>
+              </button>   
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- end of navbar -->    
+    <main class="container-fluid">
+      <section class="container pt-5" id="T&C">
+        <h1 class="pt-5 pb-2 text-center lobster-style">Terms and Conditions</h1>
+        <p style="">Welcome to <span class=" fs-4 fw-bold lobster-style">BiteBuzz</span>. These terms and conditions outline the rules and regulations for the use of our website. By accessing this website, we assume you accept these terms and conditions in full. Do not continue to use our website if you do not accept all of the terms and conditions stated on this page.</p>
+        <p><strong class="lobster-style fs-4">License</strong><br>
+        Unless otherwise stated, we own the intellectual property rights for all material on our website. All intellectual property rights are reserved. You may view and/or print pages from the website for your own personal use subject to restrictions set in these terms and conditions.</p>
+        <p><strong class="lobster-style fs-4">You must not:</strong><br>
+        &#x2015; Republish material from our website.<br>
+        &#x2015; Sell, rent, or sub-license material from our website.<br>
+        &#x2015; Reproduce, duplicate, or copy material from our website.</p>
+        <p><strong class="lobster-style fs-4">Reservation of Rights</strong><br>
+        We reserve the right at any time and in its sole discretion to request that you remove all links or any particular link to our website. You agree to immediately remove all links to our website upon such request.</p>
+      </section>
+    
+      <section class="container py-5" id="policy">
+        <h1 class="pt-5 pb-2 text-center lobster-style">Privacy Policy</h1>
+        <p>Your privacy is important to us. It is our policy to respect your privacy regarding any information we may collect from you across our website.</p>
+        <p><strong class="lobster-style fs-4">Information we collect</strong><br>
+        We may collect personal information such as your name, email address, or phone number when you make a reservation or contact us through our website.</p>
+        <p><strong class="lobster-style fs-4">How we use your information</strong><br>
+        We may use the information we collect from you to process reservations, improve our services, or communicate with you about promotions and offers.</p>
+        <p><strong class="lobster-style fs-4">Disclosure of your information</strong><br>
+        We may share your personal information with third-party service providers who assist us in operating our website, conducting our business, or serving you.</p>
+        <p><strong class="lobster-style fs-4">Security</strong><br>
+        We value your trust in providing us your personal information, thus we are striving to use commercially acceptable means of protecting it. However, remember that no method of transmission over the internet, or method of electronic storage, is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
+      </section>
+    </main>
+
+    <!-- start of footer -->
+
+    <!-- end of footer -->
+  </div>
+  
+</body>
+  <!-- custom js -->
+  <script src="js/index.js"></script>
+  
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

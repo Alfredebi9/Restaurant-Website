@@ -168,7 +168,9 @@ nav,
 }
 
 /* about restuarant & reservation */
-.about-us a {
+.abt-btn,
+.abt-btn:hover,
+.abt-btn:focus {
   color: var(--bgColor2);
 }
 
