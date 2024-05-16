@@ -197,6 +197,35 @@ router.post("/submit-form", (req, res) => {
   });
 });
 
+// contact-us form route
+router.post("/contact-form", (req, res) => {
+  //get data from input
+  const { name, email, subject, message } = req.body;
+
+  const mailOptions = {
+    from: 'alfredsalvadorfav@gmail.com',
+    to: EMAIL_USER,
+    subject: 'New Service Request', // subject line
+    html: `
+          <h2>New Service Request</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>No Of People:</strong> ${subject}</p>
+          <p><strong>Special Request:</strong> ${message}</p>
+          `
+  }
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send(`Error: unable to book meal`)
+    } else {
+      console.log(`Email sent: ${info.response}`);
+      res.send(`Request submitted successfully`);
+    }
+  });
+});
+
 // newsletter form route
 router.post("/news-form", (req, res) => {
   //get data from input

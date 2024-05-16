@@ -7,9 +7,11 @@ main i{
 }
 .contact-icon{
   background-color: var(--primary);
-  width: 3rem;
-  aspect-ratio: 1;
+  padding:0.7rem;
 }
 .enquiry{
   background-color: var(--light);
+}
+.form-control:hover, .form-control:focus{
+  border: 1px solid var(--bgColor2);
 }
