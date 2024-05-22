@@ -16,10 +16,15 @@ const EMAIL_USER = process.env.EMAIL_USER;
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
+
+    // Check for strong password
+    if (password.length < 8) {
+      return res.status(400).json({ message: "Password must be at least 8 characters" });
+    }
     // Check if the email is already registered
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).send("Email already exists");
+      return res.status(400).json({ message: "Email already exists" });
     }
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,31 +32,32 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword });
     // Save the user to the database
     await newUser.save();
-    const verificationLink = `https://t-house.vercel.app/verify/${newUser._id}`;
+    const verificationLink = `https://bitebuzz.vercel.app/verify/${newUser._id}`;
     // send verification email
     const mailOptions = {
       from: EMAIL_USER,
       to: email,
-      subject: `Email Confirmation - 🍽T-HOUSE`,
-      html: `<h1>Welcome to CRUD</h1> Click the link below to verify your email <br> <a href="${verificationLink}">${verificationLink}</a>`
+      subject: `Email Confirmation - 🍽BiteBuzz`,
+      html: `<h1>Welcome to 🍽BiteBuzz</h1> Click the link below to verify your email <br> <a href="${verificationLink}">${verificationLink}</a>`
     };
     // Function to send email using nodemailer
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
         console.log(error);
-        return res.status(500).send("Error sending verification email");
+        return res.status(500).json({ message: "Error sending verification email" });
       } else {
         console.log("Verification email sent: " + info.response);
         console.log(info.accepted);
         console.log(info.rejected);
-        res.redirect("/login");
+        const loginPage = "/login"
+        return res.json({ message: "Verification email sent", redirect: loginPage })
       }
     })
     console.log(`Email sent: ${process.env.EMAIL_USER}`);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error registering user" + error.message);
+    return res.status(500).json({ message: "Error registering user" + error.message });
   }
 });
 
@@ -62,24 +68,24 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       if (!user.verified) {
-        return res.status(401).send("Email not verified. Please verify your email before logging in.");
+        return res.status(401).json({ message: "Email not verified. Please verify your email before logging in." });
       }
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
         const token = jwt.sign({ userId: user._id }, JWT_SECRET);
-        // Send the token back to the client
         res.cookie("token", token, { httpOnly: true });
-        res.cookie("username", user.username);
-        res.redirect("/");
+        res.cookie("username", user.username, { path: '/' });
+        const returnTo = req.session.returnTo || "/";
+        return res.json({ message: "Login successful", redirect: returnTo });
       } else {
-        res.status(401).send("Invalid email or password");
+        return res.status(401).json({ message: "Invalid email or password" });
       }
     } else {
-      res.status(401).send("Invalid email or password");
+      return res.status(401).json({ message: "Invalid email or password" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error logging in");
+    return res.status(500).json({ message: "Error logging in" });
   }
 });
 
@@ -91,18 +97,17 @@ router.post("/reset-password", async (req, res) => {
     const decoded = jwt.verify(token, JWT_SECRET);
     const user = await User.findById(decoded.userId);
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
 
     // Update user's password with the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     await user.save();
-
-    res.redirect("/login");
+    res.json({ message: "password updated", redirect: "/login" })
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error resetting password");
+    res.status(500).json({ message: "Error resetting password" });
   }
 });
 
@@ -129,18 +134,13 @@ router.get("/verify/:userId", async (req, res) => {
 });
 
 
-// forgot password route 
-router.get("/forgot-password", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "public", "forgot-password.html"));
-});
-
 // forgot password route
 router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).json({ message: "User not found" });
     }
     // Generate a password reset token and send it to the user's email
     const resetToken = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
@@ -159,24 +159,23 @@ router.post("/forgot-password", async (req, res) => {
         return res.status(500).send("Error sending password reset email");
       } else {
         console.log("Password reset email sent: " + info.response);
-        res.send("Password reset instructions sent to your email");
+        res.json({ message: "Password reset instructions sent to your email" });
       }
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send("Error processing password reset request");
+    res.status(500).json({ message: "Error processing password reset request" });
   }
 });
 
 // booking form route
 router.post("/submit-form", (req, res) => {
-  //get data from input
+  //getting data from input
   const { name, email, people_No, message } = req.body;
-
   const mailOptions = {
     from: 'alfredsalvadorfav@gmail.com',
     to: EMAIL_USER,
-    subject: 'New Booking Request', // subject line
+    subject: 'New Booking Request',
     html: `
           <h2>New Booking Request</h2>
           <p><strong>Name:</strong> ${name}</p>
@@ -189,10 +188,10 @@ router.post("/submit-form", (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).send(`Error: unable to book meal`)
+      res.status(500).json({ message: `Error: unable to book meal` })
     } else {
       console.log(`Email sent: ${info.response}`);
-      res.send(`Booking request submitted successfully`);
+      res.json({ message: `Booking request submitted successfully` });
     }
   });
 });
@@ -218,20 +217,54 @@ router.post("/contact-form", (req, res) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).send(`Error: unable to book meal`)
+      res.status(500).json({ message: `Error: unable to book meal` })
     } else {
       console.log(`Email sent: ${info.response}`);
-      res.send(`Request submitted successfully`);
+      res.json({ message: `Request submitted successfully` });
     }
   });
 });
 
 // newsletter form route
+
 router.post("/news-form", (req, res) => {
   //get data from input
-  const { email } = req.body;
+  const { emailnewsletter } = req.body;
+  const email = emailnewsletter;
+  console.log(email);
 
-  const mailOptions = {
+  
+  // Check if the email is extracted correctly
+  if (!email) {
+    console.error("No email address provided");
+    return res.status(400).json({ message: "No email address provided" });
+  }
+
+  console.log("Email to send confirmation to:", email);
+
+  const confirmationMailOptions = {
+    from: EMAIL_USER,
+    to: email,
+    subject: 'Newsletter Subscription Confirmation',
+    html: `
+      <h2>Thank you for subscribing to our newsletter!</h2>
+      <p>We have successfully received your request to subscribe to our newsletter using the email address ${email}. You will now receive regular updates and news from us.</p>
+      <p>Thank you!</p>
+    `
+  }
+
+  transporter.sendMail(confirmationMailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).json({ message: `Error: unable to book meal` })
+    } else {
+      console.log(`Email sent: ${info.response}`);
+      res.json({ message: `news letter request submitted successfully` });
+    }
+  });
+
+
+  const adminMailOptions = {
     from: 'alfredsalvadorfav@gmail.com',
     to: EMAIL_USER,
     subject: 'News letter Request', // subject line
@@ -241,19 +274,24 @@ router.post("/news-form", (req, res) => {
           `
   }
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(adminMailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).send(`Error: unable to book meal`)
+      res.status(500).json({ message: `Error: unable to book meal` })
     } else {
       console.log(`Email sent: ${info.response}`);
-      res.send(`news letter request submitted successfully`);
+      res.json({ message: `news letter request submitted successfully` });
     }
   });
+
+
 });
 
 
-
+// forgot password route 
+router.get("/forgot-password", (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "forgot-password.html"));
+});
 
 // reset password route logic
 router.get("/reset-password", (req, res) => {
@@ -270,29 +308,60 @@ router.get("/reset-password", (req, res) => {
 router.get("/register", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "register.html"));
 });
+
 // Serve as login page
 router.get("/login", (req, res) => {
+  // store previous url in session
+  const lastVisitedPage = req.headers.referer;
+  console.log(lastVisitedPage)
+  if (lastVisitedPage && lastVisitedPage.endsWith("/register")) {
+    req.session.returnTo = null; // Reset returnTo if last visited page was register
+  } else {
+    req.session.returnTo = lastVisitedPage;
+  }
   res.sendFile(path.join(__dirname, "..", "public", "login.html"));
 });
+
+
+
+
+const authMiddleware = async (req, res, next) => {
+  const token = req.cookies.token;
+  const username = req.cookies.username;
+  if (token && username) {
+    jwt.verify(token, JWT_SECRET, async (err, decoded) => {
+      if (err) {
+        return res.status(401).send("Invalid or expired token");
+      }
+      next();
+    });
+  } else {
+    return res.redirect('/login');
+  }
+};
+
 // Serve as about page
-router.get("/about", (req, res) => {
+router.get("/about", authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "about.html"));
 });
+
 // Serve as booking page
-router.get("/booking", (req, res) => {
+router.get("/booking", authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "booking.html"));
 });
+
 // Serve as contact-us page
-router.get("/contact", (req, res) => {
+router.get("/contact", authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "contact-us.html"));
 });
+
 // Serve as menu page
-router.get("/menu", (req, res) => {
+router.get("/menu", authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "menu.html"));
 });
 
 // Serve as legal page
-router.get("/legal", (req, res) => {
+router.get("/legal", authMiddleware, (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "legal.html"));
 });
 
@@ -304,25 +373,8 @@ router.get("/logout", (req, res) => {
 });
 
 // Serve as home page or login page based on authentication status
-router.get("/", (req, res) => {
-  const token = req.cookies.token;
-  const username = req.cookies.username;
-  if (token && username) {
-    jwt.verify(token, JWT_SECRET, async (err, decoded) => {
-      if (err) {
-        // Token is invalid or expired, clear cookies and redirect to login page
-        res.clearCookie("token");
-        res.clearCookie("username");
-        res.redirect("/login");
-      } else {
-        // Token is valid, find the user and serve the home page with the username
-        res.sendFile(path.join(__dirname, "..", "public", "index.html"));
-      }
-    });
-  } else {
-    // No token or username found, serve login page
-    res.redirect("/login");
-  }
+router.get("/", authMiddleware, (req, res) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
 });
 
 module.exports = router;

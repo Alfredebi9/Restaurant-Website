@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function (event) {
-  event.preventDefault();
   // Owl Carousel
   const owl = $('.owl-carousel');
   owl.owlCarousel({
@@ -38,50 +37,84 @@ document.addEventListener('DOMContentLoaded', function (event) {
     });
   }
 
-  // Check for 'username' cookie
-  const usernameCookie = document.cookie.split('; ').find(row => row.startsWith('username='));
-  if (usernameCookie) {
-    const username = usernameCookie.split('=')[1];
-    document.getElementById('username-placeholder').innerText = username;
-    document.getElementById('user-profile').setAttribute('title', username);
+  
+  const bookingForm = document.getElementById("booking-form");
+  const newsForm = document.getElementById("news-form");
 
-    // Initialize Bootstrap tooltip
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
-      new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  } else {
-    document.getElementById('username-placeholder').innerText = 'Guest';
+  if (bookingForm) {
+      bookingForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const name = document.querySelector("#name").value;
+          const email = document.querySelector("#email").value;
+          const people_No = document.querySelector("#people_No").value;
+          const message = document.querySelector("#message").value;
+          const alertBox = document.querySelector(".alerts-box .alerts");
+          const formAction = event.target.getAttribute("action");
+
+          try {
+              const response = await fetch(formAction, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({ name, email, people_No, message })
+              });
+              const result = await response.json();
+              alertBox.textContent = result.message;
+
+              // show the alert box
+              const alertContainer = document.querySelector(".alerts-box");
+              alertContainer.style.display = "flex";
+
+              // Reset the  display property after 2 seconds
+              setTimeout(() => {
+                  alertContainer.style.display = "none";
+              }, 2000);
+          } catch (error) {
+              console.error("Error:", error);
+              alertBox.textContent = "An error occurred. Please try again.";
+          }
+      });
   }
- 
 
-  // document.getElementById('booking-form').addEventListener('submit', function (event) {
-  //   event.preventDefault(); // Prevent the default form submission behavior
-  
-  //   // Fetch the form data
-  //   const formData = new FormData(this);
-  
-  //   // Send the form data to the server
-  //   fetch('/submit-form', {
-  //     method: 'POST',
-  //     body: formData,
-  //   })
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       // Target the p element with id "displaymessage"
-  //       const messageParagraph = document.getElementById('displaymessage');
-  //       // Set the innerHTML of the paragraph to the JSON message
-  //       messageParagraph.innerHTML = JSON.stringify(data, null, 2);
-  //     })
-  //     .catch(error => console.error('Error:', error));
-  // });
-  
+  if (newsForm) {
+    newsForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const email = document.querySelector("#email").value;
+        const alertBox = document.querySelector("#alerts-box #alerts");
+        const formAction = event.target.getAttribute("action");
+
+        try {
+            const response = await fetch(formAction, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email })
+            });
+            const result = await response.json();
+            alertBox.textContent = result.message;
+
+            // show the alert box
+            const alertContainer = document.querySelector("#alerts-box");
+            alertContainer.style.display = "flex";
+
+            // Reset the  display property after 2 seconds
+            setTimeout(() => {
+                alertContainer.style.display = "none";
+            }, 2000);
+        } catch (error) {
+            console.error("Error:", error);
+            alertBox.textContent = "An error occurred. Please try again.";
+        }
+    });
+}
+
 });
 
 
-
-
- 
 function logout() {
   document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
   document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';

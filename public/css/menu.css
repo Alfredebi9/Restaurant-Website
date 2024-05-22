@@ -19,9 +19,6 @@ color: var(--bgColor2);
 .nav-tabs .nav-link.active {
   border-color: var(--primary);
 }
- h5 span:nth-child(1){
-  color: var(--bgColor2);
- }
  h5 span:nth-child(2){
   color: var(--primary);
  }

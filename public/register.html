@@ -34,7 +34,7 @@
 
 <body style="background-image: linear-gradient(to right,rgba(169, 85, 152, 0.9),rgba(23, 68, 87, 0.75),rgba(78, 76, 28, 0.9)), url('images/alexandru-bogdan-ghita-UeYkqQh4PoI-unsplash.jpg') ;" class="d-flex align-items-center justify-content-center px-3 py-1 position-relative ">
   <div class="container p-0">
-    <div class="alert-box position-absolute start-50 p-2 text-center text-capitalize bg-danger-subtle">
+    <div class="alert-box position-absolute start-50 p-2 text-center text-capitalize">
       <p class="alert"></p>
     </div>
     <div class="form-container overflow-hidden">
@@ -71,34 +71,8 @@
       </form>
     </div>
   </div>
+  <script src="js/auth.js"></script>
 </body>
-
 <!-- bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="js/auth.js"></script>
-
-<script>
-  const registrationForm = document.getElementById('registrationForm');
-
-  registrationForm.addEventListener('submit', (event) => {
-    const usernameInput = document.getElementById('username');
-    const emailInput = document.getElementById('email');
-
-    if (!validateEmail(emailInput.value)) {
-      event.preventDefault();
-      alert('Please enter a valid email address.');
-    }
-
-    if (usernameInput.value.trim() === '') {
-      event.preventDefault();
-      alert('Please enter a username.');
-    }
-  });
-
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(email);
-  }
-</script>
-
 </html>

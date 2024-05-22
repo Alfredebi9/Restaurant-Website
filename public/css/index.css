@@ -32,6 +32,20 @@ a {
   text-decoration: none;
 }
 
+.alerts-box {
+  transform: translateX(-50%);
+  min-width: 150px;
+  max-width: 98%;
+  width: auto;
+  height: auto;
+  border-top: 5px solid rgb(255, 37, 37);
+  background-color: var(--bgColor2);
+  z-index: 5;
+  color: var(--light);
+  display: none;
+  transition: 0.5s ease-in-out;
+}
+
 .form-control:focus {
   box-shadow: none;
   outline: none;
