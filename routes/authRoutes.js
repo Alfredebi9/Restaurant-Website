@@ -32,7 +32,7 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, email, password: hashedPassword });
     // Save the user to the database
     await newUser.save();
-    const verificationLink = `https://bitebuzz.vercel.app/verify/${newUser._id}`;
+    const verificationLink = `https://t-house.vercel.app/verify/${newUser._id}`;
     // send verification email
     const mailOptions = {
       from: EMAIL_USER,
