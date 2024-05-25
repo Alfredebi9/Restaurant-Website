@@ -4,10 +4,27 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const transporter = require("../config/emailConfig");
 const path = require("path");
+const crypto = require('crypto');
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_USER = process.env.EMAIL_USER;
+
+
+// Function to check password against Have I Been Pwned API
+async function checkPwnedPassword(password) {
+  const hash = crypto.createHash('sha1').update(password).digest('hex');
+  const prefix = hash.slice(0, 5);
+  const suffix = hash.slice(5).toUpperCase();
+
+  const fetch = (await import('node-fetch')).default;
+  const response = await fetch(`https://api.pwnedpasswords.com/range/${prefix}`);
+  const data = await response.text();
+
+  return data.includes(suffix);
+}
+
+
 
 // Registration Post action
 router.post("/register", async (req, res) => {
@@ -15,11 +32,20 @@ router.post("/register", async (req, res) => {
     const { username, email, password } = req.body;
 
     // Check for strong password
-    if (password.length < 8) {
-      return res
-        .status(400)
-        .json({ message: "Password must be at least 8 characters" });
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
+    if (!strongPasswordRegex.test(password)) {
+      return res.status(400).json({
+        message: "Password must be at least 8 characters long and include at least one letter, one number, and one special character."
+      });
     }
+    console.log(strongPasswordRegex.test(password) ? "bird" : "song")
+
+    // Check if the password has been pwned
+    const isPwned = await checkPwnedPassword(password);
+    if (isPwned) {
+      return res.status(400).json({ message: "This password has been found in a data breach. Please choose a different password." });
+    }
+
     // Check if the email is already registered
     const existingUser = await User.findOne({ email });
     if (existingUser) {

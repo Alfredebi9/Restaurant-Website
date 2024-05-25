@@ -75,19 +75,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Slide down animation
         const alertContainer = document.querySelector(".alert-box");
         alertContainer.style.transition = "top 1s ease-in-out";
-        alertContainer.style.top = "5%";
+        alertContainer.style.top = "0%";
 
         // Reset the top property after 3 seconds
         setTimeout(() => {
           alertContainer.style.top = null;
-        }, 2500);
-
+          document.querySelector("#username").value = "";
+          document.querySelector("#email").value = "";
+          document.querySelector("#password").value = "";
+        }, 3500);
         // Check if response is OK after displaying the message
         if (response.ok) {
           // Wait for the message to be displayed before redirecting
           setTimeout(() => {
             window.location.href = result.redirect;
-          }, 4000); // Redirect after 3 seconds
+          }, 45000); // Redirect after 3 seconds
         }
       } catch (error) {
         console.error("Error:", error);
