@@ -116,6 +116,9 @@
               Book A Table Online
             </h2>
             <form action="/submit-form" method="POST" id="booking-form">
+              <div class="alerts-box position-absolute start-50 p-2 text-center text-capitalize">
+                <p class="alerts"></p>
+              </div>  
               <p id="displaymessage"></p>
               <div class="row g-3">
                 <div class="col-12">
@@ -129,10 +132,10 @@
                     <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" required>
                     <label for="email">Your Email</label>
                   </div>
-                </div>             
+                </div>           
                 <div class="col-md-6">
                   <div class="form-floating">
-                    <input type="number" class="form-control datetimepicker-input" placeholder="No Of People" name="people_No" required>
+                    <input type="number" class="form-control datetimepicker-input" id="people_No" placeholder="No Of People" name="people_No" required>
                     <label for="people_No">No Of People</label>
                   </div>
                 </div>
@@ -156,6 +159,7 @@
   </div>
 </body>
 <!-- custom js -->
+<script src="js/auth.js"></script>
 <script src="js/index.js"></script>
 <script src="js/username.js"></script>
   

@@ -520,12 +520,12 @@
               <p>
                 🍽️ Stay updated on <span class="fs-5 text-nowrap lobster-style">BiteBuzz</span>  delicious offerings by signing up for our newsletter, which includes exclusive offers and menu updates.
               </p>
-              <div id="alerts-box" class="alerts-box position-absolute start-50 p-2 text-center text-capitalize">
-                <p id="alerts" class="alerts"></p>
-              </div>
               <form action="/news-form" method="post" class="my-2" id="news-form" >
+                <div id="alerts-box" class="alerts-box position-absolute start-50 p-2 text-center text-capitalize">
+                  <p id="alerts"></p>
+                </div>
                 <div class="d-flex align-items-center gap-1 form-group">
-                  <input type="email" class="form-control" id="email" placeholder="Your Email" name="email" required>
+                  <input type="email" class="form-control email" id="email" placeholder="Your Email" name="email" required>
                   <button type="submit" class="btn shiny-btn d-flex justify-content-center px-3 text-nowrap">Sign
                     Up</button>
                 </div>
@@ -544,9 +544,10 @@
   </body>
 
   <!-- custom js -->
+  <script src="js/auth.js"></script>
   <script src="js/index.js"></script>
   <script src="js/username.js"></script>
-  
+
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

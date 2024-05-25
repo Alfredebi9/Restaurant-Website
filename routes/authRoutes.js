@@ -9,9 +9,6 @@ const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_USER = process.env.EMAIL_USER;
 
-
-
-
 // Registration Post action
 router.post("/register", async (req, res) => {
   try {
@@ -19,7 +16,9 @@ router.post("/register", async (req, res) => {
 
     // Check for strong password
     if (password.length < 8) {
-      return res.status(400).json({ message: "Password must be at least 8 characters" });
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 8 characters" });
     }
     // Check if the email is already registered
     const existingUser = await User.findOne({ email });
@@ -38,26 +37,33 @@ router.post("/register", async (req, res) => {
       from: EMAIL_USER,
       to: email,
       subject: `Email Confirmation - 🍽BiteBuzz`,
-      html: `<h1>Welcome to 🍽BiteBuzz</h1> Click the link below to verify your email <br> <a href="${verificationLink}">${verificationLink}</a>`
+      html: `<h1>Welcome to 🍽BiteBuzz</h1> Click the link below to verify your email <br> <a href="${verificationLink}">${verificationLink}</a>`,
     };
     // Function to send email using nodemailer
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
         console.log(error);
-        return res.status(500).json({ message: "Error sending verification email" });
+        return res
+          .status(500)
+          .json({ message: "Error sending verification email" });
       } else {
         console.log("Verification email sent: " + info.response);
         console.log(info.accepted);
         console.log(info.rejected);
-        const loginPage = "/login"
-        return res.json({ message: "Verification email sent", redirect: loginPage })
+        const loginPage = "/login";
+        return res.json({
+          message: "Verification email sent",
+          redirect: loginPage,
+        });
       }
-    })
+    });
     console.log(`Email sent: ${process.env.EMAIL_USER}`);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Error registering user" + error.message });
+    return res
+      .status(500)
+      .json({ message: "Error registering user" + error.message });
   }
 });
 
@@ -68,13 +74,18 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       if (!user.verified) {
-        return res.status(401).json({ message: "Email not verified. Please verify your email before logging in." });
+        return res
+          .status(401)
+          .json({
+            message:
+              "Email not verified. Please verify your email before logging in.",
+          });
       }
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
         const token = jwt.sign({ userId: user._id }, JWT_SECRET);
         res.cookie("token", token, { httpOnly: true });
-        res.cookie("username", user.username, { path: '/' });
+        res.cookie("username", user.username, { path: "/" });
         const returnTo = req.session.returnTo || "/";
         return res.json({ message: "Login successful", redirect: returnTo });
       } else {
@@ -88,7 +99,6 @@ router.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Error logging in" });
   }
 });
-
 
 // reset password POST function
 router.post("/reset-password", async (req, res) => {
@@ -104,14 +114,12 @@ router.post("/reset-password", async (req, res) => {
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
     await user.save();
-    res.json({ message: "password updated", redirect: "/login" })
+    res.json({ message: "password updated", redirect: "/login" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error resetting password" });
   }
 });
-
-
 
 // Email Verification route
 router.get("/verify/:userId", async (req, res) => {
@@ -133,7 +141,6 @@ router.get("/verify/:userId", async (req, res) => {
   }
 });
 
-
 // forgot password route
 router.post("/forgot-password", async (req, res) => {
   try {
@@ -143,14 +150,16 @@ router.post("/forgot-password", async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     // Generate a password reset token and send it to the user's email
-    const resetToken = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '1h' });
+    const resetToken = jwt.sign({ userId: user._id }, JWT_SECRET, {
+      expiresIn: "1h",
+    });
     const resetLink = ` https://t-house.vercel.app/reset-password?token=${resetToken}`;
 
     const mailOptions = {
       from: EMAIL_USER,
       to: email,
       subject: "Password Reset Request",
-      html: `Click the link below to reset your password: <a href="${resetLink}">${resetLink}</a>`
+      html: `Click the link below to reset your password, it expires in 1hr <br> <a href="${resetLink}">${resetLink}</a>`,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -164,7 +173,9 @@ router.post("/forgot-password", async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error processing password reset request" });
+    res
+      .status(500)
+      .json({ message: "Error processing password reset request" });
   }
 });
 
@@ -173,22 +184,22 @@ router.post("/submit-form", (req, res) => {
   //getting data from input
   const { name, email, people_No, message } = req.body;
   const mailOptions = {
-    from: 'alfredsalvadorfav@gmail.com',
+    from: "alfredsalvadorfav@gmail.com",
     to: EMAIL_USER,
-    subject: 'New Booking Request',
+    subject: "New Booking Request",
     html: `
           <h2>New Booking Request</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>No Of People:</strong> ${people_No}</p>
           <p><strong>Special Request:</strong> ${message}</p>
-          `
-  }
+          `,
+  };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).json({ message: `Error: unable to book meal` })
+      res.status(500).json({ message: `Error: unable to book meal` });
     } else {
       console.log(`Email sent: ${info.response}`);
       res.json({ message: `Booking request submitted successfully` });
@@ -202,22 +213,22 @@ router.post("/contact-form", (req, res) => {
   const { name, email, subject, message } = req.body;
 
   const mailOptions = {
-    from: 'alfredsalvadorfav@gmail.com',
+    from: "alfredsalvadorfav@gmail.com",
     to: EMAIL_USER,
-    subject: 'New Service Request', // subject line
+    subject: "New Service Request", // subject line
     html: `
           <h2>New Service Request</h2>
           <p><strong>Name:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
-          <p><strong>No Of People:</strong> ${subject}</p>
-          <p><strong>Special Request:</strong> ${message}</p>
-          `
-  }
-
+          <p><strong>Subject:</strong> ${subject}</p>
+          <p><strong>Request:</strong> ${message}</p>
+          `,
+  };
+  console.log(mailOptions);
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).json({ message: `Error: unable to book meal` })
+      res.status(500).json({ message: `Error: unable to book meal` });
     } else {
       console.log(`Email sent: ${info.response}`);
       res.json({ message: `Request submitted successfully` });
@@ -229,11 +240,9 @@ router.post("/contact-form", (req, res) => {
 
 router.post("/news-form", (req, res) => {
   //get data from input
-  const { emailnewsletter } = req.body;
-  const email = emailnewsletter;
+  const { email } = req.body;
   console.log(email);
 
-  
   // Check if the email is extracted correctly
   if (!email) {
     console.error("No email address provided");
@@ -242,53 +251,49 @@ router.post("/news-form", (req, res) => {
 
   console.log("Email to send confirmation to:", email);
 
-  const confirmationMailOptions = {
+  const mailOptions = {
     from: EMAIL_USER,
     to: email,
-    subject: 'Newsletter Subscription Confirmation',
+    subject: "Newsletter Subscription Confirmation",
     html: `
       <h2>Thank you for subscribing to our newsletter!</h2>
       <p>We have successfully received your request to subscribe to our newsletter using the email address ${email}. You will now receive regular updates and news from us.</p>
       <p>Thank you!</p>
-    `
-  }
-
-  transporter.sendMail(confirmationMailOptions, (error, info) => {
+    `,
+  };
+  console.log(mailOptions);
+  transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).json({ message: `Error: unable to book meal` })
+      res.status(500).json({ message: `Error: unable to send request` });
     } else {
       console.log(`Email sent: ${info.response}`);
       res.json({ message: `news letter request submitted successfully` });
     }
   });
 
-
   const adminMailOptions = {
-    from: 'alfredsalvadorfav@gmail.com',
+    from: "alfredsalvadorfav@gmail.com",
     to: EMAIL_USER,
-    subject: 'News letter Request', // subject line
+    subject: "News letter Request", // subject line
     html: `
           <h2>News letter Request</h2>
           <p><strong>Email:</strong> ${email}</p>
-          `
-  }
+          `,
+  };
 
   transporter.sendMail(adminMailOptions, (error, info) => {
     if (error) {
       console.error(error);
-      res.status(500).json({ message: `Error: unable to book meal` })
+      res.status(500).json({ message: `Error: unable to book meal` });
     } else {
       console.log(`Email sent: ${info.response}`);
       res.json({ message: `news letter request submitted successfully` });
     }
   });
-
-
 });
 
-
-// forgot password route 
+// forgot password route
 router.get("/forgot-password", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "forgot-password.html"));
 });
@@ -298,7 +303,9 @@ router.get("/reset-password", (req, res) => {
   const token = req.query.token;
   jwt.verify(token, JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(401).send("Invalid or expired token. Please try again.");
+      return res
+        .status(401)
+        .send("Invalid or expired token. Please try again.");
     }
     res.sendFile(path.join(__dirname, "..", "public", "reset-password.html"));
   });
@@ -313,17 +320,19 @@ router.get("/register", (req, res) => {
 router.get("/login", (req, res) => {
   // store previous url in session
   const lastVisitedPage = req.headers.referer;
-  console.log(lastVisitedPage)
-  if (lastVisitedPage && lastVisitedPage.endsWith("/register")) {
+  console.log(lastVisitedPage);
+  if (
+    lastVisitedPage &&
+    (lastVisitedPage.endsWith("/register") ||
+      lastVisitedPage.endsWith("/reset-password") ||
+      lastVisitedPage.endsWith("/forgot-password"))
+  ) {
     req.session.returnTo = null; // Reset returnTo if last visited page was register
   } else {
     req.session.returnTo = lastVisitedPage;
   }
   res.sendFile(path.join(__dirname, "..", "public", "login.html"));
 });
-
-
-
 
 const authMiddleware = async (req, res, next) => {
   const token = req.cookies.token;
@@ -336,7 +345,7 @@ const authMiddleware = async (req, res, next) => {
       next();
     });
   } else {
-    return res.redirect('/login');
+    return res.redirect("/login");
   }
 };
 
