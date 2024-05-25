@@ -74,12 +74,10 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email });
     if (user) {
       if (!user.verified) {
-        return res
-          .status(401)
-          .json({
-            message:
-              "Email not verified. Please verify your email before logging in.",
-          });
+        return res.status(401).json({
+          message:
+            "Email not verified. Please verify your email before logging in.",
+        });
       }
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (isPasswordValid) {
@@ -118,26 +116,6 @@ router.post("/reset-password", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error resetting password" });
-  }
-});
-
-// Email Verification route
-router.get("/verify/:userId", async (req, res) => {
-  try {
-    const userId = req.params.userId;
-    // Find the user by userId
-    const user = await User.findById(userId);
-    if (!user) {
-      return res.status(404).send("User not found");
-    }
-    // Set the user's verification to true
-    user.verified = true;
-    await user.save();
-
-    res.redirect("/login");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Error verifying email");
   }
 });
 
@@ -293,6 +271,26 @@ router.post("/news-form", (req, res) => {
   });
 });
 
+// Email Verification route
+router.get("/verify/:userId", async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    // Find the user by userId
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    // Set the user's verification to true
+    user.verified = true;
+    await user.save();
+
+    res.redirect("/login");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error verifying email");
+  }
+});
+
 // forgot password route
 router.get("/forgot-password", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "forgot-password.html"));
@@ -325,6 +323,7 @@ router.get("/login", (req, res) => {
     lastVisitedPage &&
     (lastVisitedPage.endsWith("/register") ||
       lastVisitedPage.endsWith("/reset-password") ||
+      lastVisitedPage.endsWith("/verify/:userId") ||
       lastVisitedPage.endsWith("/forgot-password"))
   ) {
     req.session.returnTo = null; // Reset returnTo if last visited page was register

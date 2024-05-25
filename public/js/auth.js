@@ -34,14 +34,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Reset the top property after 3 seconds
         setTimeout(() => {
           alertContainer.style.top = null;
-        }, 2500);
+        }, 3000);
 
         // Check if response is OK after displaying the message
         if (response.ok) {
           // Wait for the message to be displayed before redirecting
           setTimeout(() => {
             window.location.href = result.redirect;
-          }, 3500); // Redirect after 3 seconds
+          }, 4000); // Redirect after 3 seconds
         }
       } catch (error) {
         console.error("Error:", error);
@@ -80,14 +80,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Reset the top property after 3 seconds
         setTimeout(() => {
           alertContainer.style.top = null;
-        }, 2000);
+        }, 2500);
 
         // Check if response is OK after displaying the message
         if (response.ok) {
           // Wait for the message to be displayed before redirecting
           setTimeout(() => {
             window.location.href = result.redirect;
-          }, 3500); // Redirect after 3 seconds
+          }, 4000); // Redirect after 3 seconds
         }
       } catch (error) {
         console.error("Error:", error);
