@@ -49,7 +49,7 @@
               </div>
               <div class="form-floating">
                 <input  type="password" id="password" class="form-control my-3 password" name="password" placeholder="Password" required>
-                <span class="toggle-password position-absolute btn p-0" onclick="togglePasswordVisibility()">
+                <span class="toggle-password position-absolute btn p-0" onclick="togglePasswordVisibility()" title="Show Password">
                   <i class="fa fa-eye" id="toggleIcon"></i>  
                 </span>
                 <label for="password">Password</label>
@@ -82,10 +82,12 @@
          passwordInput.type = "text";
          icon.classList.remove('fa-eye');
          icon.classList.add('fa-eye-slash');
+         icon.parentElement.title = "Hide Password"
      } else {
          passwordInput.type = "password";
          icon.classList.remove('fa-eye-slash');
          icon.classList.add('fa-eye');
+         icon.parentElement.title = "Show Password"
      }
    }
 </script>
