@@ -97,8 +97,8 @@ a {
 
 nav,
 .dropdown-menu {
-  background-color: var(--bgColor2);
   background: var(--bgColor);
+  background-color: var(--bgColor2);
 }
 
 .shiny-btn {
@@ -189,8 +189,8 @@ nav,
 }
 
 .reservation-menu {
-  background-color: var(--bgColor2);
   background: var(--bgColor);
+  background-color: var(--bgColor2);
   color: var(--light);
 }
 
@@ -255,8 +255,8 @@ label {
 .slider .owl-item.active.center .slider-card {
   transform: scale(1.17);
   opacity: 1;
-  background-color: var(--bgColor2);
   background: var(--bgColor);
+  background-color: var(--bgColor2);
   color: var(--light);
 }
 
@@ -287,8 +287,8 @@ label {
 
 /* footer */
 footer {
-  background-color: var(--bgColor2);
   background: var(--bgColor);
+  background-color: var(--bgColor2);
 }
 
 .company-content a::before {
@@ -304,8 +304,8 @@ footer {
   color: var(--light);
 }
 
-.company-content a:hover {
-  color: var(--bgHover);
+.company-content a:hover, .company-content a:active, .company-content a:focus {
+  color: var(--bgHover) !important;
   font-size: 17px;
 }
 
@@ -335,8 +335,9 @@ footer {
 }
 
 .social-link a:hover,
-.social-link a:focus {
-  background-color: var(--light);
+.social-link a:focus,
+.social-link a:active {
+  background-color: var(--light) !important;
   color: var(--bgColor2);
 }
 
