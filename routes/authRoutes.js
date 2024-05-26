@@ -38,8 +38,6 @@ router.post("/register", async (req, res) => {
         message: "Password must be at least 8 characters long and include at least one letter, one number, and one special character."
       });
     }
-    console.log(strongPasswordRegex.test(password) ? "bird" : "song")
-
     // Check if the password has been pwned
     const isPwned = await checkPwnedPassword(password);
     if (isPwned) {
