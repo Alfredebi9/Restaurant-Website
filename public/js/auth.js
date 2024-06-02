@@ -32,22 +32,29 @@ function validatePassword() {
 document.addEventListener("DOMContentLoaded", function (event) {
   // registration message 
   const urlParams = new URLSearchParams(window.location.search);
-    const message = urlParams.get('message');
-    if (message) {
-      const alertBox = document.querySelector(".alert-box .alert");
-      alertBox.textContent = message;
+  const message = urlParams.get('message');
+  if (message) {
+    const alertBox = document.querySelector(".alert-box .alert");
+    alertBox.textContent = message;
 
-      // Slide down animation
-      const alertContainer = document.querySelector(".alert-box");
-      alertContainer.style.transition = "top 1s ease-in-out";
-      alertContainer.style.top = "0%";
+    // Slide down animation
+    const alertContainer = document.querySelector(".alert-box");
+    alertContainer.style.transition = "top 1s ease-in-out";
+    alertContainer.style.top = "0%";
 
-      // Reset the top property after 3 seconds
-      setTimeout(() => {
-        alertContainer.style.top = null;
-      }, 3000);
-    }
+    // Reset the top property after 3 seconds
+    setTimeout(() => {
+      alertContainer.style.top = null;
+    }, 3000);
+  }
 
+
+  // Convert email input to lowercase as user types
+  const emailInput = document.getElementById('email');
+  emailInput.addEventListener('input', () => {
+    emailInput.value = emailInput.value.toLowerCase();
+  });
+  
   const loginForm = document.getElementById("loginForm");
   const registrationForm = document.getElementById("registrationForm");
   const bookingForm = document.getElementById("booking-form");
