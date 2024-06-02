@@ -48,21 +48,24 @@
                 <label for="email">Email</label>
               </div>
               <div class="form-floating">
-                <input  type="password" id="password" class="form-control my-3 password" name="password" placeholder="Password" required>
+                <div class="position-relative form-floating">
+                  <input  type="password" id="password" class="form-control my-3 password" name="password" placeholder="Password" oninput="validatePassword()" required minlength="8">
                 <span class="toggle-password position-absolute btn p-0" onclick="togglePasswordVisibility()" title="Show Password">
                   <i class="fa fa-eye" id="toggleIcon"></i>  
                 </span>
                 <label for="password">Password</label>
+                </div>
+                <small class="position-absolute text-danger bg-danger-subtle z-3" id="message" style="display: none; top: 90%; line-height: 1rem;">Password must be at least 8 characters long and include at least one letter, one number, and one special character</small>
               </div>
               <button class="btn shiny-btn submit-btn colored-btn px-3 py-2" type="submit">Login</button><br>
               <a class="btn pt-2" href="/forgot-password">Forgot Password?</a>
             </div>
           </div>
           <div class="col-md-6 col-12">
-            <div class="message1">
+            <div class="message1 px-1">
               <div class="text-center h-100 d-flex align-items-center justify-content-center flex-column">
-                <h2>Welcome Back!</h2>
-                <small class="pt-2 pb-4 d-block">Enter your personal details to use all of site features</small>
+                <h2>Hello, Friend!</h2>
+                <small class="pt-2 pb-4 d-block">Click to Register now to start enjoying all the benefits of our platform.</small>
                 <a href="/register" type="submit" class="btn shiny-btn px-5 py-2">Register</a>
               </div>
             </div>
@@ -73,24 +76,6 @@
   </div>
 </body>
 <script src="js/auth.js"></script>
-<script>
-  function togglePasswordVisibility() {
-     var passwordInput = document.getElementById("password");
-     var icon = document.getElementById("toggleIcon");
-
-     if (passwordInput.type === "password") {
-         passwordInput.type = "text";
-         icon.classList.remove('fa-eye');
-         icon.classList.add('fa-eye-slash');
-         icon.parentElement.title = "Hide Password"
-     } else {
-         passwordInput.type = "password";
-         icon.classList.remove('fa-eye-slash');
-         icon.classList.add('fa-eye');
-         icon.parentElement.title = "Show Password"
-     }
-   }
-</script>
 <!-- bootstrap js -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>

@@ -7,8 +7,13 @@
 }
 
 /* center/cover no-repeat */
-
-
+.container-xxl, .container-fluid, .container{
+  max-width: none !important;
+  width: 100% !important;
+}
+.container{
+  padding: 3em !important;
+}
 :root {
   --primary: #ff8c5e;
   --light: #F1F8FF;
@@ -71,7 +76,6 @@ a {
 .circle-image {
   animation: rotate 60s linear infinite;
 }
-
 
 /* header */
 .navbar>a>h2 {
@@ -150,11 +154,15 @@ nav,
 .nav-item a.nav-link.active {
   color: var(--bgHover) !important;
 }
-
+.img-section{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
 .img-container {
   position: relative;
   max-width: 550px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* card */

@@ -1,4 +1,53 @@
+// function to show password
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById("password");
+  const icon = document.getElementById("toggleIcon");
+
+  if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.classList.remove('fa-eye');
+      icon.classList.add('fa-eye-slash');
+      icon.parentElement.title = "Hide Password"
+  } else {
+      passwordInput.type = "password";
+      icon.classList.remove('fa-eye-slash');
+      icon.classList.add('fa-eye');
+      icon.parentElement.title = "Show Password"
+  }
+}
+
+// to show if password is strong enough
+function validatePassword() {
+  const password = document.getElementById("password").value;
+  const regex = /^(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{8,}$/;
+
+  const message = document.getElementById("message");
+  if (!regex.test(password)) {
+    message.style.display = "block";
+  } else {
+    message.style.display = "none";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function (event) {
+  // registration message 
+  const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+    if (message) {
+      const alertBox = document.querySelector(".alert-box .alert");
+      alertBox.textContent = message;
+
+      // Slide down animation
+      const alertContainer = document.querySelector(".alert-box");
+      alertContainer.style.transition = "top 1s ease-in-out";
+      alertContainer.style.top = "0%";
+
+      // Reset the top property after 3 seconds
+      setTimeout(() => {
+        alertContainer.style.top = null;
+      }, 3000);
+    }
+
   const loginForm = document.getElementById("loginForm");
   const registrationForm = document.getElementById("registrationForm");
   const bookingForm = document.getElementById("booking-form");
@@ -34,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Reset the top property after 3 seconds
         setTimeout(() => {
           alertContainer.style.top = null;
-          document.querySelector("#email").value = "";
           document.querySelector("#password").value = "";
         }, 3000);
 
@@ -43,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           // Wait for the message to be displayed before redirecting
           setTimeout(() => {
             window.location.href = result.redirect;
-          }, 4000); // Redirect after 3 seconds
+          }, 3500); // Redirect after 3 seconds
         }
       } catch (error) {
         console.error("Error:", error);
@@ -82,8 +130,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         // Reset the top property after 3 seconds
         setTimeout(() => {
           alertContainer.style.top = null;
-          document.querySelector("#username").value = "";
-          document.querySelector("#email").value = "";
           document.querySelector("#password").value = "";
         }, 3500);
         // Check if response is OK after displaying the message

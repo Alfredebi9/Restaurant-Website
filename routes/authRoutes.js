@@ -5,13 +5,14 @@ const User = require("../models/User");
 const transporter = require("../config/emailConfig");
 const path = require("path");
 const crypto = require('crypto');
+const url = require("url");
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_USER = process.env.EMAIL_USER;
 
 
-// Function to check password against Have I Been Pwned API
+// Function to check password 
 async function checkPwnedPassword(password) {
   const hash = crypto.createHash('sha1').update(password).digest('hex');
   const prefix = hash.slice(0, 5);
@@ -245,7 +246,7 @@ router.post("/news-form", (req, res) => {
   const { email } = req.body;
   console.log(email);
 
-  // Check if the email is extracted correctly
+  // Check if the email is present
   if (!email) {
     console.error("No email address provided");
     return res.status(400).json({ message: "No email address provided" });
@@ -274,6 +275,7 @@ router.post("/news-form", (req, res) => {
     }
   });
 
+  // mail sent to admin
   const adminMailOptions = {
     from: "alfredsalvadorfav@gmail.com",
     to: EMAIL_USER,
@@ -308,7 +310,7 @@ router.get("/verify/:userId", async (req, res) => {
     user.verified = true;
     await user.save();
 
-    res.redirect("/login");
+    res.redirect(`/login?message=Registration successful`);
   } catch (error) {
     console.error(error);
     res.status(500).send("Error verifying email");
@@ -354,7 +356,10 @@ router.get("/login", (req, res) => {
   } else {
     req.session.returnTo = lastVisitedPage;
   }
-  res.sendFile(path.join(__dirname, "..", "public", "login.html"));
+  const query = url.parse(req.url, true).query;
+  const message = query.message;
+
+  res.sendFile(path.join(__dirname, "..", "public", "login.html"), { message });
 });
 
 const authMiddleware = async (req, res, next) => {
